@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shaheen Group of Institutions - IT Hardware Daily Work Report</title>
+ <link rel="manifest" href="manifest.json" />
 <style>
 :root{
  --navy:#081a33;--navy2:#102d52;--blue:#2563eb;--blue2:#60a5fa;
@@ -1106,4 +1107,15 @@ setInterval(()=>{
 
 
 /* LOCAL WINDOWS ADMIN MODE - no LAN/client synchronization */
+ </script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+
+</body></html>
 </script></body></html>
