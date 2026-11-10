@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shaheen Group of Institutions - IT Hardware Daily Work Report</title>
+<style>
+:root{
+ --navy:#081a33;--navy2:#102d52;--blue:#2563eb;--blue2:#60a5fa;
+ --ink:#152238;--muted:#718096;--line:#e5eaf1;--bg:#f5f7fb;--white:#fff;
+ --green:#059669;--amber:#d97706;--red:#dc3545;
+ --shadow:0 12px 34px rgba(15,35,65,.07);--shadow2:0 22px 60px rgba(15,35,65,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 10% 0%,#fff 0,#f7f9fc 36%,#eef3f9 100%);color:var(--ink);font:14px/1.5 Inter,Segoe UI,Arial,sans-serif}
+header{
+ position:sticky;top:0;z-index:50;padding:13px max(20px,calc((100vw - 1240px)/2));
+ display:flex;align-items:center;justify-content:space-between;gap:20px;color:#fff;
+ background:linear-gradient(110deg,#071a33,#0d294b 62%,#123b67);
+ border-bottom:1px solid rgba(255,255,255,.10);box-shadow:0 10px 28px rgba(5,25,50,.18)
+}
+.brand{display:flex;gap:12px;align-items:center;font-size:18px;font-weight:850;letter-spacing:-.2px}
+.mark{
+ width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:22px;
+ background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 8px 22px rgba(37,99,235,.32)
+}
+.brand small{display:block;color:#9fb4d0;font-size:10px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+.switch{display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.10);border-radius:12px;background:rgba(255,255,255,.07)}
+.switch button{
+ background:transparent;color:#c7d5e7;border:0;padding:9px 13px;border-radius:8px;font-weight:750;cursor:pointer;
+ transition:.18s ease
+}
+.switch button:hover{background:rgba(255,255,255,.09);color:#fff}
+.switch button.on{background:#fff;color:#0b2342;box-shadow:0 5px 16px rgba(0,0,0,.14)}
+main{max-width:1240px;margin:auto;padding:30px 22px 60px}
+.view{display:none}.view.on{display:block;animation:pageIn .22s ease}
+@keyframes pageIn{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
+.view>h1{font-size:31px;line-height:1.15;letter-spacing:-.8px;margin:0}
+.intro{margin:7px 0 24px;color:var(--muted);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:22px}
+.stat{
+ position:relative;overflow:hidden;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:16px;
+ padding:17px 18px;box-shadow:var(--shadow);transition:.18s ease
+}
+.stat:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(15,35,65,.10)}
+.stat:after{content:"";position:absolute;right:-25px;top:-25px;width:82px;height:82px;border-radius:50%;background:#eff6ff}
+.stat span{position:relative;z-index:1;color:#718096;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.stat b{position:relative;z-index:1;display:block;font-size:29px;line-height:1.1;margin-top:8px;color:#10243f}
+.grid{display:grid;grid-template-columns:390px 1fr;gap:20px;align-items:start}
+.card{
+ background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:17px;padding:20px;
+ box-shadow:var(--shadow);margin-bottom:18px
+}
+.card h2{font-size:16px;line-height:1.25;margin:0 0 15px;letter-spacing:-.25px}
+.card h2:before{content:"";display:inline-block;width:4px;height:15px;border-radius:5px;background:var(--blue);margin-right:8px;vertical-align:-2px}
+label{display:block;font-size:11px;color:#526174;font-weight:850;text-transform:uppercase;letter-spacing:.045em;margin:12px 0 6px}
+input,select,textarea{
+ width:100%;border:1px solid #d8e0eb;border-radius:10px;padding:10px 11px;background:#fff;color:var(--ink);
+ font:inherit;transition:.18s ease;box-shadow:0 1px 2px rgba(16,36,63,.02)
+}
+input:hover,select:hover,textarea:hover{border-color:#c4d0df}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#60a5fa;box-shadow:0 0 0 4px rgba(37,99,235,.10)}
+textarea{min-height:72px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.btn{
+ border:0;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border-radius:10px;padding:11px 14px;
+ font:inherit;font-weight:850;cursor:pointer;box-shadow:0 8px 18px rgba(37,99,235,.20);transition:.18s ease
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 11px 23px rgba(37,99,235,.26)}
+.wide{margin-top:16px;width:100%}
+.small-btn{
+ border:1px solid #d7e0eb;background:#fff;color:#1d4ed8;border-radius:9px;padding:8px 11px;font-weight:800;cursor:pointer;
+ transition:.18s ease
+}
+.small-btn:hover{border-color:#9dbcf0;background:#f6f9ff;transform:translateY(-1px)}
+.staffs{display:grid;gap:8px}
+.staff{
+ display:flex;align-items:center;gap:10px;padding:11px;border:1px solid #e3e8f0;border-radius:11px;background:#fbfcfe
+}
+.avatar{height:34px;width:34px;border-radius:10px;background:#edf4ff;color:#2563eb;display:grid;place-items:center;font-weight:850}
+.staff div{flex:1}.staff small{display:block;color:var(--muted);font-size:11px}
+.remove{background:#fff;border:1px solid #f0c7cb;color:var(--red);border-radius:8px;padding:6px 8px;cursor:pointer}
+.engineer-presence{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}.engineer-presence-label{font-size:12px;font-weight:800;color:#475569}.presence-btn{border:1px solid #dbe3ee;background:#fff;border-radius:9px;padding:7px 10px;font-weight:800;cursor:pointer}.presence-btn.active-live{background:#e8f8f1;color:#087557;border-color:#b7ead8}.presence-btn.active-leave{background:#fff0f1;color:#b5343b;border-color:#f3c1c7}.presence-admin-select{min-width:128px;font-weight:800} .presence-note{font-size:11px;color:var(--muted);margin-top:4px}
+.tickets{display:grid;gap:11px}
+.ticket{
+ position:relative;overflow:hidden;border:1px solid var(--line);border-radius:13px;padding:16px 17px;background:#fff;
+ box-shadow:0 5px 17px rgba(15,35,65,.045)
+}
+.ticket:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
+.ticket.closed:before{background:var(--green)}
+.ticket-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.ticket h3{font-size:15px;margin:0;color:#14243a}.ticket p{margin:6px 0;color:#657489;font-size:13px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{border-radius:999px;background:#eef3fa;color:#405472;font-size:11px;font-weight:800;padding:4px 9px;border:1px solid rgba(64,84,114,.06)}
+.tag.assigned,.tag.waiting{background:#fff4df;color:#93620a}.tag.accepted,.tag.progress,.tag.travel{background:#eaf3ff;color:#1b62c9}
+.tag.resolved,.tag.closed{background:#e8f8f1;color:#087557}.tag.high{background:#fff0f1;color:#b5343b}
+.empty{padding:34px 10px;text-align:center;color:var(--muted)}
+.notice{
+ padding:13px 15px;background:linear-gradient(135deg,#f7fbff,#edf5ff);color:#36516f;border:1px solid #d8e7fb;
+ border-radius:12px;font-size:13px;margin-bottom:18px;box-shadow:0 5px 16px rgba(37,99,235,.045)
+}
+.staff-select{max-width:420px;margin-bottom:16px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.actions button{border:0;border-radius:9px;padding:9px 11px;font-weight:850;cursor:pointer;background:var(--blue);color:#fff}
+.actions .secondary{background:#eaf2ff;color:#1b5fc4}.actions .green{background:var(--green)}
+.time{color:var(--green);font-weight:850}.report{border-top:1px solid var(--line);margin-top:13px;padding-top:11px}
+.report b{font-size:11px;text-transform:uppercase;letter-spacing:.04em}.report p{margin:3px 0 8px}
+.filter{display:flex;gap:8px;align-items:center;margin-bottom:14px}.filter select{max-width:190px}
+.mini{font-size:12px;color:var(--muted)}
+.admin-tools{display:flex;justify-content:flex-end;gap:8px;margin:-43px 0 19px}
+.password-settings{display:none}.password-settings.on{display:block;animation:fadeIn .18s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.user-hero{
+ display:flex;align-items:center;justify-content:space-between;gap:24px;padding:29px 31px;border-radius:20px;
+ background:linear-gradient(120deg,#071a33,#123a65 70%,#1d5da0);color:#fff;box-shadow:0 18px 45px rgba(8,26,51,.18);margin-bottom:18px;
+ position:relative;overflow:hidden
+}
+.user-hero:after{content:"";position:absolute;right:-90px;top:-120px;width:300px;height:300px;border:55px solid rgba(255,255,255,.055);border-radius:50%}
+.user-hero h1{margin:5px 0 3px;font-size:29px;letter-spacing:-.7px}.user-hero p{margin:0;color:#c6d7ea}
+.hero-icon{font-size:52px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.18));z-index:1}
+.auth-badge{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);color:#dcecff}
+.admin-lock{
+ position:fixed;inset:0;background:linear-gradient(135deg,rgba(5,19,38,.98),rgba(10,37,66,.98));
+ display:flex;align-items:center;justify-content:center;z-index:99999;padding:20px
+}
+ .admin-lock.hidden{display:none}
+.app-gate{position:fixed;inset:0;background:linear-gradient(135deg,rgba(5,19,38,.99),rgba(10,37,66,.99));display:flex;align-items:center;justify-content:center;z-index:100000;padding:20px}.app-gate.hidden{display:none}.gate-box{width:min(460px,94vw);background:rgba(255,255,255,.98);border-radius:22px;padding:30px;box-shadow:var(--shadow2);text-align:center}.gate-box.hidden{display:none}.gate-box .gate-icon{font-size:48px}.gate-box h2{margin:8px 0 7px;font-size:23px}.gate-box p{color:#667085;margin:0 0 15px}.gate-box input{margin-top:4px}.gate-box .btn{width:100%;margin-top:12px}.role-chooser{display:flex;align-items:center;justify-content:center;width:100%;padding:0}.role-chooser.hidden{display:none}.role-box{width:min(760px,94vw);background:#fff;border-radius:22px;padding:30px;box-shadow:var(--shadow2);text-align:center}.role-box h2{margin:0 0 7px;font-size:25px}.role-box p{color:#667085;margin:0 0 22px}.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.role-card{border:1px solid #dbe3ee;background:#fbfdff;border-radius:16px;padding:24px 14px;cursor:pointer;transition:.18s ease}.role-card:hover{transform:translateY(-2px);border-color:#9dbcf0;background:#f6f9ff;box-shadow:0 10px 24px rgba(15,35,65,.09)}.role-card .ri{font-size:38px}.role-card b{display:block;font-size:16px;margin-top:8px;color:#152238}.role-card small{display:block;color:#718096;margin-top:4px}@media(max-width:680px){.role-grid{grid-template-columns:1fr}}
+.lock-box{
+ width:min(410px,94vw);background:rgba(255,255,255,.98);border:1px solid rgba(255,255,255,.22);border-radius:20px;
+ padding:28px;box-shadow:var(--shadow2);text-align:left
+}
+.lock-box h2{font-size:20px;margin-bottom:7px}.lock-box h2:before{display:none}
+.lock-box p{color:#667085}.lock-box .btn{width:100%;margin-top:12px}.lock-error{color:#c83e42!important;font-size:12px!important;min-height:18px;margin:8px 0 0!important}
+
+/* USER PORTAL STATUS / LIVE WORKBOARD */
+.user-status-layout{display:grid;grid-template-columns:1.05fr 1fr;gap:18px;margin-top:18px}
+.user-status-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:var(--shadow);margin-bottom:18px}
+.user-status-card h2{font-size:16px;line-height:1.25;margin:0 0 15px;letter-spacing:-.25px}
+.user-status-card h2:before{content:"";display:inline-block;width:4px;height:15px;border-radius:5px;background:var(--blue);margin-right:8px;vertical-align:-2px}
+.status-check-row{display:grid;grid-template-columns:1fr 1fr auto;gap:9px;align-items:end}
+.status-check-row .btn{white-space:nowrap}
+.status-result{margin-top:14px}
+.status-result.empty{padding:12px 0;text-align:left}
+.user-ticket-summary{border:1px solid #dbe5f1;border-radius:13px;padding:15px;background:#fbfdff}
+.user-ticket-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.user-ticket-head h3{font-size:16px;margin:0 0 4px;color:#14243a}
+.user-status-pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:850;background:#eef3fa;color:#405472;border:1px solid rgba(64,84,114,.06)}
+.user-status-pill.pending_admin,.user-status-pill.assigned,.user-status-pill.waiting{background:#fff4df;color:#93620a}
+.user-status-pill.accepted,.user-status-pill.progress,.user-status-pill.travel{background:#eaf3ff;color:#1b62c9}
+.user-status-pill.resolved{background:#e8f8f1;color:#087557}
+.status-timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:16px}
+.status-step{position:relative;text-align:center;font-size:10px;color:#8a98a9}
+.status-step:before{content:"";display:block;height:6px;border-radius:8px;background:#e6ebf2;margin-bottom:6px}
+.status-step.done{color:#2563eb;font-weight:800}.status-step.done:before{background:#60a5fa}
+.status-step.current{color:#0b7a5f;font-weight:900}.status-step.current:before{background:#22c55e}
+.engineer-board{display:grid;gap:9px}
+.engineer-live-row{display:flex;align-items:center;gap:11px;border:1px solid #e3e8f0;border-radius:12px;padding:11px;background:#fbfcfe}
+.engineer-live-avatar{height:36px;width:36px;border-radius:10px;background:#edf4ff;color:#2563eb;display:grid;place-items:center;font-weight:900;flex:0 0 auto}
+.engineer-live-main{flex:1;min-width:0}.engineer-live-main b{display:block}
+.engineer-live-main small{display:block;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.live-badge{font-size:10px;font-weight:900;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.live-badge.free{background:#e8f8f1;color:#087557}.live-badge.busy{background:#fff0f1;color:#b5343b}
+.workboard-table{width:100%;border-collapse:separate;border-spacing:0 7px}
+.workboard-table th{font-size:10px;color:#718096;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:0 8px 4px}
+.workboard-table td{font-size:12px;padding:10px 8px;background:#fbfcfe;border-top:1px solid #e3e8f0;border-bottom:1px solid #e3e8f0;vertical-align:top}
+.workboard-table td:first-child{border-left:1px solid #e3e8f0;border-radius:10px 0 0 10px}
+.workboard-table td:last-child{border-right:1px solid #e3e8f0;border-radius:0 10px 10px 0}
+.workboard-empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed #d5deea;border-radius:12px;background:#fbfcfe}
+.user-refresh-note{margin-top:10px;color:var(--muted);font-size:11px}
+@media(max-width:900px){.user-status-layout{grid-template-columns:1fr}.status-check-row{grid-template-columns:1fr 1fr}.status-check-row .btn{grid-column:1/-1}.status-timeline{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.status-check-row{grid-template-columns:1fr}.status-check-row .btn{grid-column:auto}.user-status-card{padding:16px}.workboard-table{font-size:11px}.workboard-table th:nth-child(3),.workboard-table td:nth-child(3){display:none}}
+
+@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}}
+@media(max-width:680px){
+ header{padding:11px 12px;align-items:flex-start}.brand{font-size:15px}.mark{width:37px;height:37px}.brand small{display:none}
+ .switch{max-width:58%;overflow:auto}.switch button{white-space:nowrap;padding:8px 9px;font-size:11px}
+ main{padding:22px 12px 45px}.stats{grid-template-columns:repeat(2,1fr);gap:9px}.stats .stat:last-child{grid-column:auto}
+ .stat{padding:13px}.stat b{font-size:24px}.two{grid-template-columns:1fr}.card{padding:16px}
+ .admin-tools{margin:0 0 15px;justify-content:flex-start;flex-wrap:wrap}.user-hero{padding:23px}.hero-icon{display:none}
+ .view>h1{font-size:25px}.ticket-top{flex-direction:column}.filter{width:100%}.filter select{max-width:none}
+}
+
+
+.engineer-report-section{overflow:hidden}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.section-head h2{margin:0}.section-head .mini{margin:4px 0 0}.report-legend{display:flex;gap:7px;flex-wrap:wrap}.report-legend span{font-size:10px;font-weight:900;padding:5px 9px;border-radius:999px}.legend-free{background:#dcfce7;color:#166534}.legend-busy{background:#fee2e2;color:#991b1b}.engineer-report-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}.engineer-report-card{min-height:82px;display:flex;gap:11px;align-items:center;padding:13px 14px!important}.engineer-report-card .avatar{width:40px;height:40px;flex:0 0 40px}.engineer-report-card small{display:block;margin-top:5px;color:var(--muted)}.admin-status-section{margin-top:18px}.admin-status-section h2{margin-bottom:6px}@media(max-width:650px){.section-head{align-items:flex-start;flex-direction:column}.report-legend{align-self:flex-start}.engineer-report-grid{grid-template-columns:1fr}}
+
+.report-tools{margin-top:18px}.engineer-report-card{padding:12px 14px;border:1px solid rgba(100,116,139,.18);border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(248,250,252,.92));box-shadow:0 5px 16px rgba(15,23,42,.06);align-items:center}.engineer-live-status{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.5px}.engineer-live-status.free{background:#dcfce7;color:#166534}.engineer-live-status.busy{background:#fee2e2;color:#991b1b}.status-dot{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}.engineer-report-summary{display:flex;gap:7px;flex-wrap:wrap}.engineer-report-summary span{font-size:10px;font-weight:700;padding:5px 8px;border-radius:8px;background:#f1f5f9;color:#475569}@media(max-width:650px){.engineer-report-summary{display:none}}
+.report-controls{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px;align-items:end}
+.report-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.report-buttons .btn{flex:1 1 220px}
+.report-note{margin-top:8px;color:var(--muted);font-size:12px}
+@media(max-width:680px){.report-controls{grid-template-columns:1fr}}
+
+.admin-all-tickets-card{margin-top:16px!important;padding:22px!important}
+.admin-all-tickets-card .ticket-top h2{font-size:22px!important}
+.admin-all-tickets-card .ticket{padding:20px 21px!important;border-radius:15px!important}
+.admin-all-tickets-card .ticket b{font-size:16px}
+.admin-all-tickets-card .ticket p,.admin-all-tickets-card .ticket div{font-size:13px}
+</style>
+
+
+
+</head><body><div id="appGate" class="app-gate"><div id="gateBox" class="gate-box"><div class="gate-icon">🏢🔐</div><h2>IT Service Manager</h2><p>Pehle apna department select karein.</p><div class="role-grid" style="grid-template-columns:1fr 1fr;margin-top:18px"><div class="role-card" id="chooseHardware" role="button" tabindex="0" onclick="chooseDepartment('hardware')" onkeydown="if(event.key==='Enter'||event.key===' ')chooseDepartment('hardware')"><div class="ri">🖥️</div><b>IT Hardware</b><small>Hardware Department</small></div><div class="role-card" id="chooseNetwork" role="button" tabindex="0" onclick="chooseDepartment('network')" onkeydown="if(event.key==='Enter'||event.key===' ')chooseDepartment('network')"><div class="ri">🌐</div><b>IT Network</b><small>Network Department</small></div></div></div><div id="deptPasswordBox" class="gate-box hidden"><div class="gate-icon">🔑</div><h2 id="deptPasswordTitle">Department Login</h2><p>Is department ka password enter karein.</p><input id="appGatePassword" type="password" autocomplete="current-password" placeholder="Department password"><p id="appGateError" class="lock-error"></p><button class="btn" id="appGateBtn">Continue</button><button class="small-btn" id="backDeptBtn" style="width:100%;margin-top:9px">← Department Change</button><p class="mini" style="margin-top:12px">First time default: <b>1234</b></p></div><div id="roleChooser" class="role-chooser hidden"><div class="role-box"><h2 id="selectedDepartmentTitle">IT Service Manager</h2><p>Department login successful. Ab apna panel select karein.</p><div class="role-grid"><div class="role-card" id="chooseStaff" onclick="showStaffLogin()"><div class="ri">👨‍🔧</div><b>Engineer</b><small>Department Engineer username + password</small></div><div class="role-card" id="chooseAdmin" onclick="openAdminRoleLogin()"><div class="ri">🔐</div><b>Admin</b><small>Department Admin password</small></div><div class="role-card" id="chooseUser" onclick="showUserLogin()"><div class="ri">👤</div><b>User</b><small>Department User login</small></div></div></div></div></div><div id="staffLock" class="admin-lock hidden"><div class="lock-box"><h2>👨‍🔧 Engineer Login</h2><p>Engineer Panel open karne ke liye apna username aur password enter karein.</p><input id="staffUsername" autocomplete="username" placeholder="Username"><input id="staffPassword" type="password" autocomplete="current-password" placeholder="Password" style="margin-top:8px"><p id="staffLockError" class="lock-error"></p><button class="btn" id="staffLoginBtn">Login</button><button class="small-btn" id="backRoleFromStaff" style="width:100%;margin-top:9px">← Back to Role Selection</button><p class="mini" style="margin-top:12px">Default password: <b>1234</b></p></div></div>
+<div id="userLock" class="admin-lock hidden"><div class="lock-box">
+  <div style="font-size:34px;margin-bottom:6px">👤</div>
+  <h2>User Portal Login</h2>
+  <p>IT Support Portal open karne ke liye User credentials enter karein.</p>
+  <input id="userUsername" autocomplete="username" placeholder="Username" value="user">
+  <input id="userPassword" type="password" autocomplete="current-password" placeholder="User password" style="margin-top:8px">
+  <p id="userLockError" class="lock-error"></p>
+  <button class="btn" id="userLoginBtn">Login to User Portal</button><button class="small-btn" id="backRoleFromUser" style="width:100%;margin-top:9px">← Back to Role Selection</button>
+  <p class="mini" style="margin-top:12px">First time default: <b>user / 1234</b></p>
+</div></div>
+<div id="adminActionLock" class="admin-lock hidden" style="z-index:9999"><div class="lock-box"><h2>🔒 Admin Password</h2><p id="adminActionText">Admin password enter karein.</p><input id="adminActionPassword" type="password" autocomplete="current-password" placeholder="Admin password"><p id="adminActionError" class="lock-error"></p><button class="btn" id="adminActionLoginBtn">Continue</button><button class="small-btn" id="adminActionCancelBtn" style="width:100%;margin-top:9px">Cancel</button></div></div><div id="adminLock" class="admin-lock hidden"><div class="lock-box"><h2>🔒 Admin Login</h2><p>IT Service Task Manager open karne ke liye Admin password enter karein.</p><input id="adminPassword" type="password" placeholder="Admin password"><p id="lockError" class="lock-error"></p><button class="btn" id="unlockBtn">Login</button><button class="small-btn" id="backRoleFromAdmin" style="width:100%;margin-top:9px">← Back to Role Selection</button><p class="mini" style="margin-top:12px">First time default password: <b>1234</b></p></div></div>
+<header><div class="brand"><div class="mark">⌁</div><div>Shaheen Group of Institutions<small id="departmentBrand">IT Service Management</small></div></div><div class="switch"><button class="on" data-view="admin">Admin</button><button data-view="staff">Engineer Panel</button><button data-view="user">User Panel</button></div></header>
+<main>
+<section id="admin" class="view on"><h1>Service Dashboard</h1><p class="intro">Customer complaints ko ticket banayein, IT engineer assign karein aur repair progress track karein.</p><div class="admin-tools"><button class="small-btn" id="changePwBtn">🔒 Change Admin Password</button><button class="small-btn" id="changeUserPwBtn">👤 Change User Password</button><button class="small-btn" id="changeGatePwBtn">🚪 Change IT Service Manager Password</button><button class="small-btn" id="adminLogoutBtn">↪️ Logout</button><button class="small-btn" id="departmentLogoutBtn">🏢 Change Department</button></div><div id="passwordSettings" class="card password-settings"><h2>Admin Password Change</h2><div class="two"><div><label>Current password</label><input id="oldPw" type="password"></div><div><label>New password</label><input id="newPw" type="password" minlength="4"></div></div><button class="btn" id="savePwBtn" style="margin-top:12px">Save New Password</button><p id="savePwMsg" class="mini" style="margin-top:8px"></p></div><div id="gatePasswordSettings" class="card password-settings"><h2>🚪 App Door Password Change</h2><p class="mini">Ye password sirf App ka door kholta hai. Isko change karne ka permission sirf Admin ko hai.</p><div class="two"><div><label>Current App Door password</label><input id="oldGatePw" type="password"></div><div><label>New App Door password</label><input id="newGatePw" type="password" minlength="4"></div></div><button class="btn" id="saveGatePwBtn" style="margin-top:12px">Save App Door Password</button><p id="saveGatePwMsg" class="mini" style="margin-top:8px"></p></div><div id="userPasswordSettings" class="card password-settings"><h2>👤 User Portal Password</h2><p class="mini">User Panel ko protect karne ke liye login password yahan se change karein.</p><div class="two"><div><label>Current User password</label><input id="oldUserPw" type="password"></div><div><label>New User password</label><input id="newUserPw" type="password" minlength="4"></div></div><button class="btn" id="saveUserPwBtn" style="margin-top:12px">Save User Password</button><p id="saveUserPwMsg" class="mini" style="margin-top:8px"></p></div><div class="stats"><div class="stat"><span>Total Tickets</span><b id="total">0</b></div><div class="stat"><span>New / Assigned</span><b id="new">0</b></div><div class="stat"><span>Work In Progress</span><b id="working">0</b></div><div class="stat"><span>Waiting Parts</span><b id="waiting">0</b></div><div class="stat"><span>Resolved</span><b id="resolved">0</b></div></div>
+<div class="grid"><div><div class="card"><h2>New IT Service Ticket</h2><form id="ticketForm"><label>Customer name *</label><input id="customer" required placeholder="e.g. Rahul Sharma"><div class="two"><div><label>Customer mobile *</label><input id="mobile" required inputmode="tel" placeholder="9876543210"></div><div><label>Company / Location</label><input id="location" placeholder="Office / area"></div></div><div class="two"><div><label>Branch *</label><input id="branch" required placeholder="e.g. Head Office / Branch 1"></div><div><label>Department *</label><input id="department" required placeholder="e.g. HR / Accounts / Sales"></div></div><div class="two"><div><label>Device / Product *</label><select id="device"><option>Laptop</option><option>Desktop</option><option>Printer</option><option>Keyboard</option><option>Mouse</option><option>Cartridge Refilling</option><option>Shifting / Installation</option><option>Wi-Fi / Network</option><option>CCTV</option><option>Software / Windows</option><option>Other IT device</option><option value="__manual__">✏️ Manual Device</option></select><input id="deviceManual" placeholder="Enter device / product name" style="display:none;margin-top:8px"></div><div><label>Brand / Model</label><input id="model" placeholder="HP, Dell, Canon..."></div></div><label>Problem reported *</label><textarea id="problem" required placeholder="e.g. Laptop on nahi ho raha, blue screen aa rahi hai"></textarea><label>Engineer(s) assign karein *</label><select id="engineer" required multiple size="4"></select><div class="mini" style="margin-top:6px">Admin only: ek se zyada engineer assign karne ke liye Ctrl/Cmd ke saath multiple engineers select karein.</div><p class="mini">Ek task ke liye 2 ya 4 engineers select karne ke liye Ctrl dabakar names select karein. Mobile par naam tap karke multiple select karein.</p><div class="two"><div><label>Priority</label><select id="priority"><option>Normal</option><option>High</option><option>Urgent</option></select></div><div><label>Visit / due date</label><input id="due" type="date"></div></div><label>Possible spare part (agar pata ho)</label><input id="parts" placeholder="e.g. SSD, RAM, charger"><button class="btn wide">Ticket Assign Karein</button></form></div><div class="card"><h2>IT Engineers</h2><form id="staffForm"><label>Engineer ka naam</label><input id="staffName" required placeholder="e.g. Mohit"><label>Login username *</label><input id="staffUsernameNew" required placeholder="e.g. mohit"><label>Login password *</label><input id="staffPasswordNew" required type="password" minlength="4" placeholder="Minimum 4 characters"><label>Mobile number (optional)</label><input id="staffMobile" inputmode="tel" placeholder="9876543210"><button class="btn wide">+ Engineer Add Karein</button></form><div id="staffList" class="staffs" style="margin-top:13px"></div></div></div>
+<div class="card engineer-report-section"><div class="section-head"><div><h2>👨‍🔧 Engineer Work Report</h2><p class="mini">Live engineer availability aur current workload.</p></div><div class="report-legend"><span class="legend-free">● FREE</span><span class="legend-busy">● BUSY</span></div></div><div id="workReport" class="staffs engineer-report-grid"></div></div><div class="card report-tools">
+<h2>Admin Reports & PDF Download</h2>
+<div class="report-controls">
+  <div><label>Report Period</label><select id="reportPeriod">
+    <option value="daily">Daily</option><option value="monthly">Monthly</option><option value="yearly">Yearly</option>
+  </select></div>
+  <div><label>Select Date / Month / Year</label><input id="reportDate" type="date"></div>
+  <div><label>Engineer (optional)</label><select id="reportEngineer"><option value="">All Engineers</option></select></div>
+</div>
+<div class="report-buttons">
+  <button class="btn" onclick="downloadEngineerWorkPDF()">📄 Engineer Work Report PDF</button>
+  <button class="btn" onclick="downloadUserCompletedPDF()">👤 User Completed Report PDF</button>
+  <button class="btn" onclick="downloadEngineerTimePDF()">⏱ Engineer Start / End Time PDF</button>
+</div>
+<div class="report-note">Ye reports sirf Admin session se download ki ja sakti hain. Daily, monthly aur yearly period select karke sabhi engineers ka data nikala ja sakta hai.</div>
+</div><div class="card admin-status-section"><h2>🔎 Ticket Status Checking</h2><p class="mini">User ko diya gaya same Ticket No yahan dal kar Admin kisi bhi ticket ka current status check kar sakta hai. Mobile Number optional hai.</p><div class="status-check-row"><div><label>Ticket No</label><input id="adminStatusTicketId" placeholder="e.g. T1750000000000"></div><div><label>Mobile Number (optional)</label><input id="adminStatusMobile" inputmode="tel" placeholder="9876543210"></div><button class="btn" id="adminStatusCheckBtn">Check Status</button></div><div id="adminStatusResult" class="status-result"></div><div class="card">
+<h2>📋 Live Service Workboard</h2>
+<p class="mini">Current running / assigned work, engineer aur task location ek hi jagah.</p>
+<div id="adminWorkboard"></div>
+</div><div class="card admin-all-tickets-card"><div class="ticket-top"><h2>All Service Tickets</h2><div class="filter"><select id="filterStatus"><option value="all">All status</option><option value="pending_admin">User Requests</option><option value="assigned">New / Assigned</option><option value="accepted">Accepted</option><option value="travel">Travelling</option><option value="progress">In Progress</option><option value="waiting">Waiting Parts</option><option value="resolved">Resolved</option></select></div></div><div id="adminTickets" class="tickets"></div></div></div></div></section>
+
+<section id="user" class="view">
+<div class="user-hero"><div><span class="auth-badge">🔐 Secure User Portal</span><h1>IT Support Service Portal</h1><p>Apni IT problem securely report karein. Ticket raise karein aur apne kaam ka live status dekhein.</p></div><div class="hero-icon">🎫</div></div>
+<div style="display:flex;justify-content:flex-end;margin:-8px 0 12px"><button class="small-btn" id="userLogoutBtn">🔒 Logout User</button></div>
+<div class="notice"><b>Service Status:</b><br>Ticket raise karne ke baad yahan se <b>Ticket ID + Mobile</b> se status check karein. Engineer accept kare, travelling ho, kaam chal raha ho, spare part ka wait ho ya ticket resolve ho — sab status yahin dikhega.</div>
+
+<div class="user-status-layout">
+  <div class="user-status-card">
+    <h2>🔎 Ticket Status Check</h2>
+    <p class="mini">Apna Ticket ID aur wahi mobile number enter karein jo ticket raise karte waqt diya tha.</p>
+    <div class="status-check-row">
+      <div><label>Ticket ID</label><input id="userStatusTicketId" placeholder="e.g. T1750000000000"></div>
+      <div><label>Mobile Number</label><input id="userStatusMobile" inputmode="tel" placeholder="9876543210"></div>
+      <button class="btn" id="userStatusCheckBtn">Check Status</button>
+    </div>
+    <div id="userStatusResult" class="status-result">
+      <div class="workboard-empty">Ticket ID + mobile dal kar status check karein.</div>
+    </div>
+  </div>
+
+  <div class="user-status-card">
+    <h2>👨‍🔧 Engineer Availability</h2>
+    <p class="mini">Kaunsa engineer free hai aur kaunsa current task par busy hai, yahan dekhein.</p>
+    <div id="userEngineerBoard" class="engineer-board"></div>
+    <div class="user-refresh-note">Status automatically refresh hota rahega jab is panel ka data update hoga.</div>
+  </div>
+</div>
+
+<div class="user-status-card">
+  <h2>📋 Live Service Workboard</h2>
+  <p class="mini">Current running / assigned work, engineer aur task location ek hi jagah.</p>
+  <div id="userWorkboard"></div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>New IT Service Request</h2>
+    <form id="userTicketForm">
+      <label>Name *</label>
+      <input id="userCustomer" required placeholder="e.g. Rahul Sharma">
+      <div class="two">
+        <div><label>Mobile *</label><input id="userMobile" required inputmode="tel" placeholder="9876543210"></div>
+        <div><label>Branch *</label><input id="userBranch" required placeholder="e.g. Head Office / Branch 1"></div>
+      </div>
+      <div class="two">
+        <div><label>Department *</label><input id="userDepartment" required placeholder="e.g. HR / Accounts / Sales"></div>
+        <div><label>Company / Location</label><input id="userLocation" placeholder="Office / area"></div>
+      </div>
+      <div class="two">
+        <div>
+          <label>Device / Product *</label>
+          <select id="userDevice">
+            <option>Laptop</option><option>Desktop</option><option>Printer</option>
+            <option>Keyboard</option><option>Mouse</option><option>Cartridge Refilling</option>
+            <option>Shifting / Installation</option><option>Wi-Fi / Network</option>
+            <option>CCTV</option><option>Software / Windows</option><option>Other IT device</option>
+            <option value="__manual__">✏️ Manual Device</option>
+          </select>
+          <input id="userDeviceManual" placeholder="Enter device / product name" style="display:none;margin-top:8px">
+        </div>
+        <div><label>Brand / Model</label><input id="userModel" placeholder="HP, Dell, Canon..."></div>
+      </div>
+      <label>Problem reported *</label>
+      <textarea id="userProblem" required placeholder="e.g. Laptop on nahi ho raha"></textarea>
+      <div class="two">
+        <div><label>Priority</label><select id="userPriority"><option>Normal</option><option>High</option><option>Urgent</option></select></div>
+        <div><label>Preferred / due date</label><input id="userDue" type="date"></div>
+      </div>
+      <label>Possible spare part (agar pata ho)</label>
+      <input id="userParts" placeholder="e.g. SSD, RAM, charger">
+      <button class="btn wide">🎫 Ticket Raise Karein</button>
+    </form>
+    <p id="userTicketMsg" class="mini" style="margin-top:10px"></p>
+  </div>
+  <div>
+    <div class="card">
+      <h2>ℹ️ Status Meaning</h2>
+      <div class="tags" style="margin-top:0">
+        <span class="tag assigned">New / Assigned</span>
+        <span class="tag accepted">Engineer Accepted</span>
+        <span class="tag travel">Travelling</span>
+        <span class="tag progress">Work In Progress</span>
+        <span class="tag waiting">Waiting Spare Parts</span>
+        <span class="tag resolved">Resolved</span>
+      </div>
+      <p class="mini" style="margin-top:12px">Aapko engineer ka current task aur spare-part waiting status bhi visible rahega.</p>
+    </div>
+  </div>
+</div>
+</section>
+<section id="staff" class="view"><h1>Engineer Daily Work Panel</h1><p class="intro">Apna naam choose karein aur assigned hardware jobs ka status update karein.</p><div class="notice"><b>Kaam ka simple process:</b><br>1. Apna naam choose karein. &nbsp; 2. Naye ticket me <b>Accept Task</b> dabayein. &nbsp; 3. Kaam shuru karte waqt <b>Start Task</b> dabayein—start time automatic save hoga. &nbsp; 4. Kaam pura hone par <b>Resolve Job</b> dabakar solution aur used spare part likhein—end time aur total time automatic save hoga.</div><div class="staff-select"><label>Logged-in engineer</label><select id="currentEngineer" disabled></select><button class="small-btn" id="staffLogoutBtn" style="margin-top:8px">Logout</button></div><div class="card" style="margin-top:14px"><h2>🟢 My Availability</h2><p class="mini">Yahan se aap apna leave status set kar sakte hain. Ye Admin aur User dashboard par bhi dikhega.</p><div id="staffPresenceControls"></div></div><div class="card report-tools" style="margin-top:14px"><h2>📄 My Work Reports</h2><p class="mini">Ye report sirf aapke logged-in engineer account ke tickets ki hogi. Admin ki reports aur dusre engineers ka data yahan available nahi hai.</p><div class="report-controls"><div><label>Report Period</label><select id="myReportPeriod"><option value="daily">Daily</option><option value="monthly">Monthly</option><option value="yearly">Yearly</option></select></div><div><label>Select Date / Month / Year</label><input id="myReportDate" type="date"></div><div><label>Engineer</label><input id="myReportEngineerName" disabled placeholder="Logged-in engineer"></div></div><div class="report-buttons"><button class="btn" onclick="downloadMyEngineerWorkPDF()">📄 My Work Report PDF</button><button class="btn" onclick="downloadMyTimePDF()">⏱ My Start / End Time PDF</button></div></div><div id="staffTickets" class="tickets"></div></section>
+</main><script>
+
+/* IT Service Manager LAN sync: CENTRAL SERVER is the single source of truth. */
+(function(){
+  if(location.protocol==='file:') return;
+  const LS=window.localStorage;
+  const OG=LS.getItem.bind(LS), OS=LS.setItem.bind(LS), OR=LS.removeItem.bind(LS);
+  const API='/api/state';
+  let bootVersion=null, syncing=false;
+
+  function request(method, body){
+    try{
+      const x=new XMLHttpRequest();
+      x.open(method,API,false);
+      x.setRequestHeader('Cache-Control','no-cache');
+      if(body!==undefined) x.setRequestHeader('Content-Type','application/json');
+      x.send(body===undefined?null:JSON.stringify(body));
+      if(x.status>=200 && x.status<300) return JSON.parse(x.responseText||'{}');
+    }catch(e){}
+    return null;
+  }
+
+  function central(){
+    const r=request('GET');
+    if(r && r.ok){
+      bootVersion=Number(r.version||0);
+      return r.state||null;
+    }
+    return null;
+  }
+
+  function writeCentral(localState){
+    if(syncing) return;
+    syncing=true;
+    try{
+      /*
+       * Merge only the currently active department into the server copy.
+       * This prevents an old client page from overwriting changes made by
+       * another PC/department.
+       */
+      let state=localState;
+      const current=central();
+      let active='';
+      try{ active=sessionStorage.getItem('it-active-department')||''; }catch(e){}
+      if(current && active && current.departments && localState && localState.departments && localState.departments[active]){
+        state=JSON.parse(JSON.stringify(current));
+        state.departments=state.departments||{};
+        state.departments[active]=localState.departments[active];
+      }
+      const r=request('POST',{state:state});
+      if(r && r.ok) bootVersion=Number(r.version||bootVersion||0);
+    }finally{ syncing=false; }
+  }
+
+  /* On every page load, prefer the central DB over browser-local data. */
+  const initialCentral=central();
+  if(initialCentral) OS('it-kaamset-v1',JSON.stringify(initialCentral));
+
+  LS.getItem=function(k){
+    if(k==='it-kaamset-v1'){
+      const s=central();
+      if(s) return JSON.stringify(s);
+    }
+    return OG(k);
+  };
+
+  LS.setItem=function(k,v){
+    OS(k,v);
+    if(k==='it-kaamset-v1'){
+      try{ writeCentral(JSON.parse(v)); }catch(e){}
+    }
+  };
+
+  LS.removeItem=function(k){ OR(k); };
+  window.__LAN_SERVER_SYNC__=true;
+
+  /* Poll central DB so changes made on another PC appear automatically. */
+  setInterval(function(){
+    if(syncing) return;
+    const r=request('GET');
+    if(r && r.ok && r.state){
+      const v=Number(r.version||0);
+      if(bootVersion!==null && v!==bootVersion){
+        OS('it-kaamset-v1',JSON.stringify(r.state));
+        bootVersion=v;
+        location.reload();
+      }else{
+        bootVersion=v;
+      }
+    }
+  },2000);
+})();
+const initial={staff:[{id:'e1',name:'Aman',mobile:'',username:'aman',password:'1234'},{id:'e2',name:'Rohit',mobile:'',username:'rohit',password:'1234'},{id:'e3',name:'Priya',mobile:'',username:'priya',password:'1234'},{id:'e4',name:'Neha',mobile:'',username:'neha',password:'1234'}],tickets:[],appGatePassword:'1234'};let db=JSON.parse(localStorage.getItem('it-kaamset-v1')||'null')||initial;
+let activeDepartment=sessionStorage.getItem('it-active-department')||'';
+function persistDepartmentState(){if(!activeDepartment||!db.departments?.[activeDepartment])return;db.departments[activeDepartment].staff=Array.isArray(db.staff)?db.staff:[];db.departments[activeDepartment].tickets=Array.isArray(db.tickets)?db.tickets:[];}
+function ensureDepartments(){if(db.departments?.hardware&&db.departments?.network)return;const oldStaff=Array.isArray(db.staff)?db.staff:initial.staff,oldTickets=Array.isArray(db.tickets)?db.tickets:[];const norm=(a,p)=>a.map((x,i)=>({...x,id:x.id||p+(i+1),username:x.username||String(x.name||('engineer'+(i+1))).toLowerCase().replace(/\s+/g,''),password:x.password||'1234',department:p==='h'?'hardware':'network'}));db.departments={hardware:{name:'IT Hardware',password:db.appGatePassword||'1234',adminPassword:localStorage.getItem('it-admin-password-v1')||'1234',userPassword:localStorage.getItem('it-user-password-v1')||'1234',staff:norm(oldStaff,'h'),tickets:oldTickets.map(t=>({...t,department:'hardware'})),updatedAt:Date.now()},network:{name:'IT Network',password:'1234',adminPassword:'1234',userPassword:'1234',staff:[],tickets:[],updatedAt:Date.now()}};delete db.staff;delete db.tickets;delete db.appGatePassword;localStorage.setItem('it-kaamset-v1',JSON.stringify(db));}
+function loadDepartment(key){activeDepartment=key;sessionStorage.setItem('it-active-department',key);const d=db.departments[key];db.staff=d.staff||[];db.tickets=d.tickets||[];db.appGatePassword=d.password||'1234';localStorage.setItem('it-admin-password-v1',d.adminPassword||'1234');localStorage.setItem('it-user-password-v1',d.userPassword||'1234');if($('selectedDepartmentTitle'))$('selectedDepartmentTitle').textContent=d.name;if($('departmentBrand'))$('departmentBrand').textContent=d.name+' Daily Work Report';}
+ensureDepartments();
+const $=id=>document.getElementById(id),save=()=>{persistDepartmentState();if(activeDepartment&&db.departments?.[activeDepartment]){db.departments[activeDepartment].password=db.appGatePassword||db.departments[activeDepartment].password;db.departments[activeDepartment].adminPassword=localStorage.getItem('it-admin-password-v1')||db.departments[activeDepartment].adminPassword;db.departments[activeDepartment].userPassword=localStorage.getItem('it-user-password-v1')||db.departments[activeDepartment].userPassword;db.departments[activeDepartment].updatedAt=Date.now();}localStorage.setItem('it-kaamset-v1',JSON.stringify(db));};
+if(sessionStorage.getItem('it-app-gate-open-v1')==='1'&&activeDepartment&&db.departments?.[activeDepartment]){
+  loadDepartment(activeDepartment);
+}else{
+  activeDepartment='';
+  sessionStorage.removeItem('it-active-department');
+}
+const escape=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),fmt=min=>min<60?min+' min':Math.floor(min/60)+'h '+min%60+'m';
+const setActiveView=view=>{document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===view));document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('on',b.dataset.view===view));};
+const label={assigned:'New / Assigned',accepted:'Accepted',travel:'Travelling',progress:'In Progress',waiting:'Waiting Parts',resolved:'Resolved'};
+const engineerIds=t=>t.engineerIds||(t.engineerId?[t.engineerId]:[]);
+const timeText=stamp=>stamp?new Date(stamp).toLocaleString([], {day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'';
+function options(){let o=db.staff.map(x=>`<option value="${x.id}">${escape(x.name)}</option>`).join('')||'<option value="">Pehle engineer add karein</option>';$('engineer').innerHTML=o;$('currentEngineer').innerHTML=o;let ro='<option value="">All Engineers</option>'+db.staff.map(x=>`<option value="${x.id}">${escape(x.name)}</option>`).join('');$('reportEngineer').innerHTML=ro}
+function ticketCard(t,staffMode=false){
+  let engineers=engineerIds(t).map(id=>db.staff.find(x=>x.id===id)?.name).filter(Boolean).join(', ')||'Not assigned';
+  let timeInfo=`<div class="report"><b>Work time record</b><p>Start: ${t.started?timeText(t.started):'Not started yet'}<br>End: ${t.finished?timeText(t.finished):'Not completed yet'}${t.total!=null?`<br><span class="time">Total: ${fmt(t.total)}</span>`:''}</p></div>`;
+  let report=t.solution?`<div class="report"><b>Solution / work note</b><p>${escape(t.solution)}</p>${t.usedParts?`<b>Spare parts used</b><p>${escape(t.usedParts)}</p>`:''}</div>`:'';
+  let actions='';
+  if(staffMode){
+    if(t.status==='assigned') actions=`<button onclick="change('${t.id}','accepted')">Accept Task</button>`;
+    else if(t.status==='accepted') actions=`<button onclick="start('${t.id}')">Start Task</button>`;
+    else if(t.status==='travel') actions=`<button onclick="start('${t.id}')">Start Task</button>`;
+    else if(t.status==='progress') actions=`<button class="secondary" onclick="waitParts('${t.id}')">Waiting Parts</button><button class="green" onclick="resolve('${t.id}')">Resolve Job</button>`;
+    else if(t.status==='waiting') actions=`<button onclick="start('${t.id}')">Parts Mil Gaye - Start</button>`;
+  }else{
+    if(t.status==='pending_admin') actions=`<button onclick="approveAndAssign('${t.id}')">✅ Accept & Assign Engineer(s)</button>`;
+    else if(t.status!=='resolved') actions=`<button onclick="reassignTicket('${t.id}')">🔄 Change Engineer</button>`;
+    actions+=`<button class="remove" onclick="deleteTicket('${t.id}')">Delete Ticket</button>`;
+  }
+  let source=t.source==='user'?`<span class="tag accepted">👤 User Raised</span>`:'';
+  return `<article class="ticket ${t.status==='resolved'?'closed':''}">
+    <div class="ticket-top"><div><h3>${escape(t.customer)} <span class="mini">#${t.id.slice(-5)}</span></h3>
+    <p>${escape(t.device)}${t.model?' · '+escape(t.model):''}</p></div>
+    <span class="tag ${t.status}">${label[t.status]||t.status}</span></div>
+    <p><b>Problem:</b> ${escape(t.problem)}</p>
+    <div class="tags"><span class="tag">🎫 Ticket No: ${escape(t.id)}</span><span class="tag">📱 Mobile: ${escape(t.mobile||'—')}</span>${source}<span class="tag">👨‍🔧 ${escape(engineers)}</span>${t.location?`<span class="tag">📍 ${escape(t.location)}</span>`:''}${t.due?`<span class="tag">Due: ${t.due}</span>`:''}<span class="tag ${t.priority==='Normal'?'': 'high'}">${t.priority}</span>${t.parts?`<span class="tag">Parts: ${escape(t.parts)}</span>`:''}${t.total!=null?`<span class="tag resolved">⏱ ${fmt(t.total)}</span>`:''}${(t.latestEta||t.engineerEta||t.adminEta)?`<span class="tag">🕒 Engineer Reach ETA: ${escape(t.latestEta||t.engineerEta||t.adminEta)}</span>`:''}${t.status==='progress'?`<span class="time">⏱ Work running</span>`:''}</div>
+    ${t.status==='pending_admin'?`<div class="notice" style="margin-top:10px">Ye ticket User ne raise kiya hai. Admin ko pehle approve karke engineer assign karna hai.</div>`:''}
+    ${timeInfo}${report}${actions?`<div class="actions">${actions}</div>`:''}
+  </article>`;
+}
+function engineerPresence(st){return st&&st.presence==='leave'?'leave':'live'}
+function engineerPresenceLabel(st){return engineerPresence(st)==='leave'?'On Leave':'Live / Available'}
+function findFreeEngineer(){
+  return db.staff.find(st=>{
+    if(engineerPresence(st)==='leave') return false;
+    const active=db.tickets.some(t=>engineerIds(t).includes(st.id)&&t.status!=='resolved');
+    return !active;
+  });
+}
+function autoAssignPendingUserTickets(){
+  const now=Date.now(), WAIT=10*60*1000;
+  let changed=false;
+  db.tickets.slice().reverse().forEach(t=>{
+    if(t.source!=='user'||t.status!=='pending_admin'||!t.createdAt||now-t.createdAt<WAIT)return;
+    const free=findFreeEngineer();
+    if(!free)return;
+    t.engineerIds=[free.id];
+    t.status='assigned';
+    t.autoAssignedAt=now;
+    t.autoAssignedBy='System';
+    t.assignmentUpdatedAt=now;
+    t.assignmentUpdatedBy='System';
+    changed=true;
+  });
+  if(changed){save();render();}
+}
+
+function renderStaffPresenceControls(){
+  const el=$('staffPresenceControls'); if(!el)return;
+  const id=sessionStorage.getItem('it-staff-user')||$('currentEngineer').value; const st=db.staff.find(x=>x.id===id);
+  if(!st){el.innerHTML='<div class="empty">Engineer login ke baad status yahan set karein.</div>';return}
+  const p=engineerPresence(st);
+  el.innerHTML=`<div class="engineer-presence"><label class="presence-btn ${p==='leave'?'active-leave':''}"><input type="checkbox" ${p==='leave'?'checked':''} onchange="setEngineerPresence('${st.id}',this.checked?'leave':'live',false)" style="margin-right:6px">🔴 On Leave</label></div><div class="presence-note">On Leave select karte hi Admin aur User dashboard par bhi same status dikhega.</div>`;
+}
+async function setEngineerPresence(id,value,adminAction){
+  const st=db.staff.find(x=>x.id===id); if(!st)return;
+  if(!adminAction){const logged=sessionStorage.getItem('it-staff-user'); if(logged!==id){alert('Sirf logged-in engineer apna status change kar sakta hai.');return;}}
+  else {if(!(await requireAdminAction('Engineer availability status change')))return;}
+  st.presence=value==='leave'?'leave':'live'; st.presenceUpdatedAt=Date.now(); st.presenceUpdatedBy=adminAction?'Admin':(st.name||'Engineer');
+  save(); render();
+}
+function render(){options();renderUserPanel();renderAdminWorkboard();let tickets=db.tickets, s=tickets.filter(t=>t.status);$('total').textContent=tickets.length;$('new').textContent=tickets.filter(t=>['pending_admin','assigned','accepted'].includes(t.status)).length;$('working').textContent=tickets.filter(t=>['travel','progress'].includes(t.status)).length;$('waiting').textContent=tickets.filter(t=>t.status==='waiting').length;$('resolved').textContent=tickets.filter(t=>t.status==='resolved').length;
+$('staffList').innerHTML=db.staff.length?db.staff.map(x=>{let p=engineerPresence(x);return `<div class="staff"><div class="avatar">${escape(x.name[0].toUpperCase())}</div><div><b>${escape(x.name)}</b><small>Username: <b>${escape(x.username)}</b> · ${x.mobile?escape(x.mobile)+' · ':''}${tickets.filter(t=>engineerIds(t).includes(x.id)&&t.status!=='resolved').length} active job(s)</small><small><b>${p==='leave'?'🔴 On Leave':'🟢 Live / Available'}</b></small></div><label class="presence-btn ${p==='leave'?'active-leave':''}" title="Admin engineer status"><input type="checkbox" ${p==='leave'?'checked':''} onchange="setEngineerPresence('${x.id}',this.checked?'leave':'live',true)" style="margin-right:6px">🔴 On Leave</label><button class="small-btn" onclick="editStaff('${x.id}')">✏️ Edit</button><button class="remove" onclick="delStaff('${x.id}')">Remove</button></div>`}).join(''):'<div class="empty">Koi engineer add nahi hua.</div>';$('workReport').innerHTML=db.staff.length?db.staff.map(x=>{let my=tickets.filter(t=>engineerIds(t).includes(x.id)),active=my.filter(t=>t.status!=='resolved').length,done=my.filter(t=>t.status==='resolved'),mins=done.reduce((n,t)=>n+(t.total||0),0),busy=active>0;return `<div class="staff engineer-report-card"><div class="avatar">${escape(x.name[0].toUpperCase())}</div><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b>${escape(x.name)}</b><span class="engineer-live-status ${engineerPresence(x)==='leave'?'busy':(busy?'busy':'free') }"><span class="status-dot"></span>${engineerPresence(x)==='leave'?'ON LEAVE':(busy?'BUSY':'FREE')}</span></div><small>Active: ${active} · Resolved: ${done.length} · Total work: ${fmt(mins)}</small></div><div class="engineer-report-summary"><span>${active} Active</span><span>${done.length} Resolved</span></div></div>`}).join(''):'<div class="empty">Koi engineer add nahi hua.</div>';let filter=$('filterStatus').value;$('adminTickets').innerHTML=tickets.filter(t=>filter==='all'||t.status===filter).map(t=>ticketCard(t)).join('')||'<div class="empty">Koi matching ticket nahi hai.</div>';renderStaff()}
+function renderStaff(){let logged=sessionStorage.getItem('it-staff-user');let id=logged||$('currentEngineer').value||db.staff[0]?.id;if(id)$('currentEngineer').value=id;let ts=db.tickets.filter(t=>engineerIds(t).includes(id));$('staffTickets').innerHTML=ts.map(t=>ticketCard(t,true)).join('')||'<div class="card empty">Aapko abhi koi task assign nahi hua.</div>';renderStaffPresenceControls()}
+async function change(id,status){
+  let t=db.tickets.find(x=>x.id===id); if(!t)return;
+  if(status==='accepted'){
+    let eta=prompt('User ko engineer ke pahunchne ka approximate time kya batana hai?\nExample: 20 minutes, 30 minutes, 1 hour',t.engineerEta||'1 hour');
+    if(eta===null)return;
+    eta=eta.trim(); if(!eta)return alert('Engineer ke pahunchne ka approximate time required hai.');
+    t.engineerEta=eta; t.engineerEtaAt=Date.now(); t.latestEta=eta; t.latestEtaAt=t.engineerEtaAt; t.latestEtaBy='Engineer';
+    t.engineerEtaBy=db.staff.find(x=>x.id===(sessionStorage.getItem('it-staff-user')||$('currentEngineer').value))?.name||'Engineer';
+  }
+  t.status=status; save(); render();
+};function start(id){let t=db.tickets.find(x=>x.id===id);t.status='progress';if(!t.started)t.started=Date.now();save();render()};function waitParts(id){let t=db.tickets.find(x=>x.id===id);let p=prompt('Kaunsa spare part chahiye?');if(p!==null){t.status='waiting';t.parts=p||t.parts;save();render()}};function resolve(id){let t=db.tickets.find(x=>x.id===id);let solution=prompt('Kya solution kiya? (Required)');if(!solution)return;let used=prompt('Kaunsa spare part use hua? (Nahi hua to blank chhodein)');t.status='resolved';t.solution=solution;t.usedParts=used||'';t.finished=Date.now();t.total=Math.max(1,Math.round((t.finished-(t.started||t.finished))/60000));save();render()};async function approveAndAssign(id){
+   if(!(await requireAdminAction('User ticket approve & multiple engineer assign'))) return;
+   let t=db.tickets.find(x=>x.id===id);
+   if(!t)return;
+   if(t.status!=='pending_admin')return alert('Ye ticket ab pending approval me nahi hai.');
+   if(!db.staff.length)return alert('Pehle kam se kam ek engineer add karein.');
+   let eta=prompt('User ko engineer ke pahunchne ka approximate time kya batana hai?\nExample: 20 minutes, 30 minutes, 1 hour',t.adminEta||'1 hour');
+   if(eta===null)return;
+   eta=eta.trim();
+   if(!eta)return alert('Engineer ke pahunchne ka approximate time required hai.');
+   let list=db.staff.map((x,i)=>`${i+1}. ${x.name} (${x.username})`).join('\n');
+   let pick=prompt('Engineer(s) select karein.\n\nEk engineer: 2\nMultiple engineers: 1,3,4\n\n'+list);
+   if(pick===null)return;
+   let nums=pick.split(',').map(v=>parseInt(v.trim(),10)).filter(Number.isInteger);
+   let unique=[...new Set(nums)];
+   if(!unique.length||unique.some(n=>n<1||n>db.staff.length))return alert('Invalid engineer selection. Example: 1,3,4');
+   let ids=unique.map(n=>db.staff[n-1].id);
+   t.engineerIds=ids;
+   t.status='assigned';
+   t.adminApprovedAt=Date.now();
+   t.adminApprovedBy='Admin';
+   t.adminEta=eta;
+   t.adminEtaAt=Date.now();
+   t.latestEta=eta; t.latestEtaAt=t.adminEtaAt; t.latestEtaBy='Admin';
+   t.assignmentUpdatedAt=Date.now();
+   t.assignmentUpdatedBy='Admin';
+   save();render();
+   let names=ids.map(eid=>db.staff.find(x=>x.id===eid)?.name).filter(Boolean);
+   alert('Ticket approve ho gaya aur '+names.join(', ')+' ko assign kar diya gaya. Approximate time: '+eta);
+ }
+async function editStaff(id){
+  if(!(await requireAdminAction('Engineer edit'))) return;
+  let st=db.staff.find(x=>x.id===id);
+  if(!st)return;
+  let name=prompt('Engineer ka naam:',st.name); if(name===null)return; name=name.trim(); if(!name)return alert('Engineer name required hai.');
+  let username=prompt('Login username:',st.username); if(username===null)return; username=username.trim().toLowerCase().replace(/\s+/g,''); if(!username)return alert('Username required hai.');
+  if(db.staff.some(x=>x.id!==id&&x.username===username))return alert('Ye username already use ho raha hai. Dusra username rakhein.');
+  let password=prompt('Login password (blank rakhein to purana password same rahega):',''); if(password===null)return; password=password.trim()||st.password;
+  if(password.length<4)return alert('Password minimum 4 characters ka hona chahiye.');
+  let mobile=prompt('Mobile number (optional):',st.mobile||''); if(mobile===null)return;
+  st.name=name; st.username=username; st.password=password; st.mobile=mobile.trim(); save(); render(); alert('Engineer details successfully update ho gaye.');
+}
+async function reassignTicket(id){
+  if(!(await requireAdminAction('Ticket engineer change'))) return;
+  let t=db.tickets.find(x=>x.id===id);
+  if(!t)return;
+  if(t.status==='resolved')return alert('Resolved ticket ko reassign nahi kiya ja sakta.');
+  if(!db.staff.length)return alert('Pehle kam se kam ek engineer add karein.');
+  let list=db.staff.map((x,i)=>`${i+1}. ${x.name} (${x.username})`).join('\n');
+  let current=engineerIds(t).map(eid=>db.staff.find(x=>x.id===eid)?.name).filter(Boolean).join(', ')||'Not assigned';
+  let pick=prompt('Current engineer: '+current+'\n\nNaya engineer select karein. Number enter karein. Multiple engineers ke liye comma use karein (e.g. 1,3):\n\n'+list);
+  if(pick===null)return;
+  let nums=pick.split(',').map(v=>parseInt(v.trim(),10)).filter(Number.isInteger);
+  let unique=[...new Set(nums)];
+  if(!unique.length||unique.some(n=>n<1||n>db.staff.length))return alert('Invalid engineer selection.');
+  let ids=unique.map(n=>db.staff[n-1].id);
+  t.previousEngineerIds=engineerIds(t).slice();
+  t.engineerIds=ids;
+  t.reassignedAt=Date.now();
+  t.reassignedBy='Admin';
+  if(t.status==='pending_admin'){t.status='assigned';t.adminApprovedAt=t.adminApprovedAt||Date.now();t.adminApprovedBy='Admin';}
+  save();render();
+  alert('Ticket successfully '+ids.map(eid=>db.staff.find(x=>x.id===eid)?.name).filter(Boolean).join(', ')+' ko assign kar diya gaya.');
+}
+async function requireAdminAction(action){if(sessionStorage.getItem('it-staff-user')){alert('Admin action sirf Admin account se allowed hai.');return false;}if(sessionStorage.getItem('it-admin-unlocked')!=='1'){alert('Admin session locked hai. Pehle Admin password se login karein.');$('adminLock').classList.remove('hidden');return false;}return await new Promise(resolve=>{const box=$('adminActionLock'),input=$('adminActionPassword'),err=$('adminActionError');$('adminActionText').textContent=action+' ke liye Admin password enter karein:';input.value='';err.textContent='';box.classList.remove('hidden');setTimeout(()=>input.focus(),50);const cleanup=()=>{box.classList.add('hidden');$('adminActionLoginBtn').onclick=null;$('adminActionCancelBtn').onclick=null;input.onkeydown=null;};$('adminActionCancelBtn').onclick=()=>{cleanup();resolve(false)};$('adminActionLoginBtn').onclick=()=>{if(input.value===getAdminPassword()){cleanup();resolve(true)}else{err.textContent='Wrong Admin password. Try again.';input.select()}};input.onkeydown=e=>{if(e.key==='Enter')$('adminActionLoginBtn').click();if(e.key==='Escape')$('adminActionCancelBtn').click()};});}async function deleteTicket(id){if(!(await requireAdminAction('Ticket delete')))return;if(!confirm('Kya aap ye ticket delete karna chahte hain?'))return;db.tickets=db.tickets.filter(t=>t.id!==id);save();render()};async function delStaff(id){if(!(await requireAdminAction('Engineer remove')))return;if(db.tickets.some(t=>engineerIds(t).includes(id)&&t.status!=='resolved'))return alert('Is engineer ke active tickets hain. Pehle unhe resolve/reassign karein.');if(!activeDepartment)return;db.staff=db.staff.filter(x=>x.id!==id);persistDepartmentState();saveLocal();render();}
+
+function setReportDateDefault(){
+  const d=$('reportDate');
+  if(!d)return;
+  const now=new Date();
+  d.value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+}
+function syncReportControls(){
+  let p=$('reportPeriod').value, d=$('reportDate');
+  if(p==='daily'){d.type='date';}
+  else if(p==='monthly'){d.type='month';}
+  else {d.type='number';d.min='2000';d.max='2100';d.step='1';d.value=new Date().getFullYear();}
+}
+function reportRange(){
+  let p=$('reportPeriod').value, raw=$('reportDate').value, now=new Date(), start,end;
+  if(!raw){
+    if(p==='daily') raw=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+    else if(p==='monthly') raw=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+    else raw=String(now.getFullYear());
+  }
+  if(p==='daily'){
+    start=new Date(raw+'T00:00:00'); end=new Date(start); end.setDate(end.getDate()+1);
+  }else if(p==='monthly'){
+    let [y,m]=raw.split('-').map(Number); start=new Date(y,m-1,1); end=new Date(y,m,1);
+  }else{
+    let y=Number(raw); if(!y) y=now.getFullYear(); start=new Date(y,0,1); end=new Date(y+1,0,1);
+  }
+  return {start:start.getTime(),end:end.getTime(),label:p==='daily'?raw:(p==='monthly'?raw:String(raw))};
+}
+function reportTickets(){
+  let r=reportRange(), eid=$('reportEngineer').value;
+  return db.tickets.filter(t=>{
+    if(eid && !engineerIds(t).includes(eid)) return false;
+    let ts=[t.finished,t.started,t.createdAt,t.adminApprovedAt].filter(Boolean);
+    return ts.some(v=>v>=r.start && v<r.end);
+  });
+}
+function reportHeader(title){
+  let r=reportRange(), e=$('reportEngineer').value;
+  let en=e?(db.staff.find(x=>x.id===e)?.name||''):'All Engineers';
+  return [title,`Period: ${r.label}`,`Engineer: ${en}`,`Generated: ${new Date().toLocaleString()}`,''];
+}
+function safePDFText(v){
+  return String(v==null?'':v).replace(/[^\x20-\x7E]/g,'?').replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)');
+}
+function pdfTextWidth(text,size){return String(text||'').length*size*0.52;}
+function wrapPDFText(text,maxChars){
+  let s=String(text==null?'':text).replace(/\s+/g,' ').trim();
+  if(!s)return [''];
+  let words=s.split(' '), out=[], cur='';
+  words.forEach(w=>{
+    if(!cur){cur=w;return;}
+    if((cur+' '+w).length<=maxChars) cur+=' '+w;
+    else {out.push(cur);cur=w;}
+  });
+  if(cur)out.push(cur);
+  return out.length?out:[''];
+}
+function makeProfessionalPDF(title, periodLabel, columns, rows, summaryText){
+  // Premium A4 landscape report layout for professional printing.
+  const W=842,H=595, margin=28, usable=W-margin*2, headerH=108, footerH=34;
+  const colWidths=columns.map(c=>c.width), total=colWidths.reduce((a,b)=>a+b,0);
+  const scale=usable/total, widths=colWidths.map(w=>w*scale);
+  const tableX=margin;
+  const headerBottom=H-margin-headerH;
+  const rowFont=8.1, lineH=10.4, cellPad=5, minRowH=25;
+  const pages=[], makePage=()=>({cmd:[]});
+  let page=makePage(), y=headerBottom;
+  let reportGenerated=new Date().toLocaleString();
+  function startPage(){page=makePage();pages.push(page);y=headerBottom;}
+  startPage();
+
+  function addHeader(p){
+    // White top area + navy title band, designed to resemble a corporate stationery page.
+    p.cmd.push('1 1 1 rg',`${margin} ${H-78} ${usable} 50 re f`);
+    p.cmd.push('0.04 0.22 0.45 rg',`${margin+270} ${H-78} ${usable-270} 50 re f`);
+    p.cmd.push('0 0 0 rg');
+
+    p.cmd.push('0.04 0.22 0.45 rg');
+    p.cmd.push('BT','/F2 19 Tf',`${margin+14} ${H-47} Td`,`(${safePDFText('SHAHEEN')}) Tj`,'ET');
+    p.cmd.push('BT','/F3 8.5 Tf',`${margin+15} ${H-61} Td`,`(${safePDFText('GROUP OF INSTITUTIONS')}) Tj`,'ET');
+    p.cmd.push('1 1 1 rg');
+    p.cmd.push('BT','/F2 8.5 Tf',`${margin+300} ${H-47} Td`,`(${safePDFText('IT SERVICE MANAGEMENT')}) Tj`,'ET');
+    p.cmd.push('BT','/F2 13 Tf',`${margin+300} ${H-64} Td`,`(${safePDFText(title)}) Tj`,'ET');
+
+    p.cmd.push('BT','/F1 8 Tf',`${W-250} ${H-45} Td`,`(${safePDFText('Report Period : '+periodLabel)}) Tj`,'ET');
+    p.cmd.push('BT','/F1 8 Tf',`${W-250} ${H-59} Td`,`(${safePDFText('Generated At : '+reportGenerated)}) Tj`,'ET');
+
+    // Italic subtitle / branding line.
+    p.cmd.push('0.04 0.22 0.45 rg');
+    p.cmd.push('BT','/F3 8.5 Tf',`${margin+2} ${H-91} Td`,`(${safePDFText('Knowledge  |  Character  |  Progress')}) Tj`,'ET');
+    p.cmd.push('0 0 0 rg');
+  }
+  addHeader(page);
+
+  function drawFooter(p, pageNo){
+    p.cmd.push('0.04 0.22 0.45 rg',`${margin} 27 ${usable} 1.5 re f`,'0 0 0 rg');
+    p.cmd.push('BT','/F3 7.5 Tf',`${margin} 13 Td`,`(${safePDFText('Better Support  |  Better Systems  |  A Stronger Tomorrow')}) Tj`,'ET');
+    p.cmd.push('BT','/F1 7.5 Tf',`${W/2-50} 13 Td`,`(${safePDFText('Confidential - IT Department Report')}) Tj`,'ET');
+    p.cmd.push('BT','/F2 8 Tf',`${W-margin-58} 13 Td`,`(${safePDFText('Page '+pageNo)}) Tj`,'ET');
+  }
+
+  function drawTableHeader(){
+    const h=30;
+    pHeaderBlue(page,tableX,y-h,usable,h);
+    let x=tableX;
+    columns.forEach((c,i)=>{
+      page.cmd.push('1 w',`${x} ${y-h} ${widths[i]} ${h} re S`);
+      let lines=wrapPDFText(c.label,Math.max(8,Math.floor(widths[i]/5.1))).slice(0,2);
+      let ty=y-11;
+      lines.forEach(line=>{
+        page.cmd.push('BT','/F2 8 Tf',`${x+cellPad} ${ty} Td`,`(${safePDFText(line)}) Tj`,'ET');
+        ty-=9;
+      });
+      x+=widths[i];
+    });
+    y-=h;
+  }
+  function pHeaderBlue(p,x,y0,w,h){
+    p.cmd.push('0.04 0.22 0.45 rg',`${x} ${y0} ${w} ${h} re f`,'1 1 1 rg');
+  }
+  function drawRow(row,idx){
+    const cellLines=row.map((v,i)=>wrapPDFText(v,Math.max(7,Math.floor((widths[i]-cellPad*2)/(rowFont*0.52)))));
+    const maxLines=Math.max(...cellLines.map(a=>a.length));
+    const h=Math.max(minRowH,maxLines*lineH+cellPad*2);
+    if(y-h < footerH+18){
+      drawFooter(page,pages.length); startPage(); addHeader(page); y=headerBottom; drawTableHeader();
+    }
+    // Soft alternating blue rows.
+    if(idx%2===1){page.cmd.push('0.95 0.97 1 rg',`${tableX} ${y-h} ${usable} ${h} re f`,'0 0 0 rg');}
+    page.cmd.push('0 0 0 rg','0.55 w');
+    let x=tableX;
+    columns.forEach((c,i)=>{
+      page.cmd.push(`${x} ${y-h} ${widths[i]} ${h} re S`);
+      // Status badges: green for completed, blue for in-progress, without changing the data.
+      let raw=String(row[i]||'');
+      if(/completed|resolved/i.test(raw) && /status/i.test(c.label)){
+        page.cmd.push('0.12 0.60 0.28 rg',`${x+cellPad} ${y-h/2-6} ${Math.min(widths[i]-cellPad*2,55)} 14 re f`,'1 1 1 rg');
+        page.cmd.push('BT','/F2 7 Tf',`${x+cellPad+7} ${y-h/2-1} Td`,`(${safePDFText('Completed')}) Tj`,'ET','0 0 0 rg');
+      } else if(/in progress/i.test(raw) && /status/i.test(c.label)){
+        page.cmd.push('0.10 0.45 0.85 rg',`${x+cellPad} ${y-h/2-6} ${Math.min(widths[i]-cellPad*2,58)} 14 re f`,'1 1 1 rg');
+        page.cmd.push('BT','/F2 7 Tf',`${x+cellPad+7} ${y-h/2-1} Td`,`(${safePDFText('In Progress')}) Tj`,'ET','0 0 0 rg');
+      } else {
+        let ty=y-cellPad-8;
+        cellLines[i].forEach(line=>{
+          page.cmd.push('BT','/F1 8.1 Tf',`${x+cellPad} ${ty} Td`,`(${safePDFText(line)}) Tj`,'ET');
+          ty-=lineH;
+        });
+      }
+      x+=widths[i];
+    });
+    y-=h;
+  }
+
+  if(summaryText){
+    page.cmd.push('0.92 0.95 0.99 rg',`${margin} ${y-22} ${usable} 20 re f`,'0 0 0 rg');
+    page.cmd.push('BT','/F2 8.5 Tf',`${margin+7} ${y-15} Td`,`(${safePDFText(summaryText)}) Tj`,'ET');
+    y-=28;
+  }
+  drawTableHeader();
+  if(!rows.length){
+    page.cmd.push('BT','/F3 10 Tf',`${margin} ${y-20} Td`,`(${safePDFText('No records found for the selected period.')}) Tj`,'ET');
+  } else rows.forEach((r,i)=>drawRow(r,i));
+  drawFooter(page,pages.length);
+
+  let objs=[],offsets=[],add=o=>{objs.push(o);return objs.length;};
+  const font=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>');
+  const bold=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>');
+  const italic=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>');
+  let pageIds=[],contentIds=[];
+  pages.forEach(pg=>{
+    let stream=pg.cmd.join('\n');
+    contentIds.push(add(`<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`));
+    pageIds.push(add(''));
+  });
+  const pagesObj=add('');
+  pageIds.forEach((pid,i)=>objs[pid-1]=`<< /Type /Page /Parent ${pagesObj} 0 R /MediaBox [0 0 ${W} ${H}] /Resources << /Font << /F1 ${font} 0 R /F2 ${bold} 0 R /F3 ${italic} 0 R >> >> /Contents ${contentIds[i]} 0 R >>`);
+  objs[pagesObj-1]=`<< /Type /Pages /Kids [${pageIds.map(x=>x+' 0 R').join(' ')}] /Count ${pageIds.length} >>`;
+  const catalog=add(`<< /Type /Catalog /Pages ${pagesObj} 0 R >>`);
+  let pdf='%PDF-1.4\n'; offsets=[0];
+  objs.forEach((o,i)=>{offsets[i+1]=pdf.length;pdf+=`${i+1} 0 obj\n${o}\nendobj\n`;});
+  let xref=pdf.length; pdf+=`xref\n0 ${objs.length+1}\n0000000000 65535 f \n`;
+  for(let i=1;i<=objs.length;i++) pdf+=String(offsets[i]).padStart(10,'0')+' 00000 n \n';
+  pdf+=`trailer\n<< /Size ${objs.length+1} /Root ${catalog} 0 R >>\nstartxref\n${xref}\n%%EOF`;
+  let blob=new Blob([pdf],{type:'application/pdf'}), a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=title.replace(/[^a-z0-9]+/gi,'_')+'.pdf'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+async function adminPDFGuard(name){return await requireAdminAction(name)}
+async function downloadEngineerWorkPDF(){
+  if(!(await adminPDFGuard('Engineer Work Report PDF'))) return;
+  let ts=reportTickets(), r=reportRange();
+  let engineers=db.staff.filter(e=>!$('reportEngineer').value||e.id===$('reportEngineer').value);
+  let rows=[];
+  engineers.forEach(e=>{
+    ts.filter(t=>engineerIds(t).includes(e.id)).forEach(t=>rows.push([
+      e.name,t.id,t.customer,t.device,label[t.status]||t.status,t.total!=null?fmt(t.total):'Not completed',t.finished?timeText(t.finished):'-'
+    ]));
+  });
+  makeProfessionalPDF('ENGINEER WORK REPORT',r.label,[
+    {label:'Engineer',width:100},{label:'Ticket ID',width:72},{label:'User / Customer',width:115},{label:'Device',width:92},{label:'Status',width:78},{label:'Total Work',width:78},{label:'Completed',width:120}
+  ],rows,`Total jobs in selected period: ${rows.length}`);
+}
+async function downloadUserCompletedPDF(){
+  if(!(await adminPDFGuard('User Completed Report PDF'))) return;
+  let ts=reportTickets().filter(t=>t.source==='user'&&t.status==='resolved'), r=reportRange();
+  let rows=ts.map((t,i)=>[
+    String(i+1),t.id,t.customer,t.device,engineerIds(t).map(id=>db.staff.find(e=>e.id===id)?.name).filter(Boolean).join(', ')||'-',t.finished?timeText(t.finished):'-'
+  ]);
+  makeProfessionalPDF('USER COMPLETED TICKET REPORT',r.label,[
+    {label:'#',width:38},{label:'Ticket ID',width:78},{label:'User / Customer',width:145},{label:'Device',width:110},{label:'Engineer',width:150},{label:'Completed At',width:130}
+  ],rows,`Total user tickets completed: ${rows.length}`);
+}
+async function downloadEngineerTimePDF(){
+  if(!(await adminPDFGuard('Engineer Start End Time PDF'))) return;
+  let ts=reportTickets(), r=reportRange(), rows=[];
+  db.staff.filter(e=>!$('reportEngineer').value||e.id===$('reportEngineer').value).forEach(e=>{
+    ts.filter(t=>engineerIds(t).includes(e.id)&&t.started).forEach(t=>rows.push([
+      e.name,t.id,t.customer,t.device,t.started?timeText(t.started):'-',t.finished?timeText(t.finished):'-',t.total!=null?fmt(t.total):'Running / not completed'
+    ]));
+  });
+  makeProfessionalPDF('ENGINEER START / END TIME REPORT',r.label,[
+    {label:'Engineer',width:110},{label:'Ticket ID',width:75},{label:'User / Customer',width:155},{label:'Device',width:100},{label:'Start Time',width:115},{label:'End Time',width:115},{label:'Total Work',width:100}
+  ],rows,`Total timed work records: ${rows.length}`);
+}
+
+function engineerReportGuard(){let id=sessionStorage.getItem('it-staff-user');if(!id){alert('Pehle Engineer login karein.');return null}let st=db.staff.find(x=>x.id===id);if(!st){sessionStorage.removeItem('it-staff-user');alert('Engineer session invalid hai. Dobara login karein.');return null}return st}
+function myReportRange(){let p=$('myReportPeriod').value,raw=$('myReportDate').value,now=new Date(),start,end;if(!raw){if(p==='daily')raw=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;else if(p==='monthly')raw=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;else raw=String(now.getFullYear())}if(p==='daily'){start=new Date(raw+'T00:00:00');end=new Date(start);end.setDate(end.getDate()+1)}else if(p==='monthly'){let [y,m]=raw.split('-').map(Number);start=new Date(y,m-1,1);end=new Date(y,m,1)}else{let y=Number(raw)||now.getFullYear();start=new Date(y,0,1);end=new Date(y+1,0,1)}return{start:start.getTime(),end:end.getTime(),label:p==='daily'?raw:(p==='monthly'?raw:String(raw))}}
+function myReportTickets(st){let r=myReportRange();return db.tickets.filter(t=>{if(!engineerIds(t).includes(st.id))return false;let ts=[t.finished,t.started,t.createdAt,t.adminApprovedAt].filter(Boolean);return ts.some(v=>v>=r.start&&v<r.end)})}
+function syncMyReportControls(){let p=$('myReportPeriod').value,d=$('myReportDate'),now=new Date();if(p==='daily'){d.type='date';d.value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`}else if(p==='monthly'){d.type='month';d.value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`}else{d.type='number';d.min='2000';d.max='2100';d.step='1';d.value=new Date().getFullYear()}}
+function updateMyReportEngineerName(){let id=sessionStorage.getItem('it-staff-user'),st=id?db.staff.find(x=>x.id===id):null;$('myReportEngineerName').value=st?st.name:''}
+function downloadMyEngineerWorkPDF(){let st=engineerReportGuard();if(!st)return;let ts=myReportTickets(st),r=myReportRange();let rows=ts.map(t=>[st.name,t.id,t.customer,t.device,label[t.status]||t.status,t.total!=null?fmt(t.total):'Not completed',t.finished?timeText(t.finished):'-']);makeProfessionalPDF('MY ENGINEER WORK REPORT',r.label,[{label:'Engineer',width:100},{label:'Ticket ID',width:72},{label:'User / Customer',width:115},{label:'Device',width:92},{label:'Status',width:78},{label:'Total Work',width:78},{label:'Completed',width:120}],rows,`Engineer: ${st.name}   |   Total jobs in selected period: ${rows.length}`)}
+function downloadMyTimePDF(){let st=engineerReportGuard();if(!st)return;let ts=myReportTickets(st).filter(t=>t.started),r=myReportRange();let rows=ts.map(t=>[st.name,t.id,t.customer,t.device,t.started?timeText(t.started):'-',t.finished?timeText(t.finished):'-',t.total!=null?fmt(t.total):'Running / not completed']);makeProfessionalPDF('MY ENGINEER START / END TIME REPORT',r.label,[{label:'Engineer',width:105},{label:'Ticket ID',width:75},{label:'User / Customer',width:150},{label:'Device',width:105},{label:'Start Time',width:115},{label:'End Time',width:115},{label:'Total Work',width:100}],rows,`Engineer: ${st.name}   |   Total timed work records: ${rows.length}`)}
+
+
+const userStatusOrder=['pending_admin','assigned','accepted','travel','progress','waiting','resolved'];
+const userStatusLabel={
+  pending_admin:'Waiting Admin Approval', assigned:'New / Assigned', accepted:'Engineer Accepted',
+  travel:'Travelling', progress:'Work In Progress', waiting:'Waiting Spare Parts', resolved:'Resolved'
+};
+function normalizeMobile(v){return String(v||'').replace(/\D/g,'')}
+function userTicketTimeline(status){
+  const flow=['pending_admin','assigned','accepted','travel','progress','waiting','resolved'];
+  const idx=flow.indexOf(status);
+  return `<div class="status-timeline">${flow.map((s,i)=>{
+    const done=i<idx, current=i===idx;
+    return `<div class="status-step ${done?'done':''} ${current?'current':''}">${escape(userStatusLabel[s])}</div>`;
+  }).join('')}</div>`;
+}
+function renderUserTicketResult(t){
+  if(!t){$('userStatusResult').innerHTML='<div class="workboard-empty">Ticket ID ya mobile number match nahi hua. Details check karke dobara try karein.</div>';return}
+  const engs=engineerIds(t).map(id=>db.staff.find(x=>x.id===id)?.name).filter(Boolean);
+  const status=t.status||'pending_admin';
+  const location=t.location?escape(t.location):'Location not provided';
+  const started=t.started?timeText(t.started):'Not started yet';
+  const finished=t.finished?timeText(t.finished):'Not completed yet';
+  $('userStatusResult').innerHTML=`<div class="user-ticket-summary">
+    <div class="user-ticket-head"><div><h3>${escape(t.customer)} <span class="mini">#${escape(t.id.slice(-5))}</span></h3><div class="mini">${escape(t.device)}${t.model?' · '+escape(t.model):''} · 📍 ${location}</div></div>
+    <span class="user-status-pill ${status}">${escape(userStatusLabel[status]||status)}</span></div>
+    <p style="margin:12px 0 7px"><b>Problem:</b> ${escape(t.problem)}</p>
+    <div class="tags"><span class="tag">👨‍🔧 ${engs.length?escape(engs.join(', ')):'Engineer not assigned yet'}</span>${t.due?`<span class="tag">Due: ${escape(t.due)}</span>`:''}${(t.latestEta||t.engineerEta||t.adminEta)?`<span class="tag">🕒 Engineer Reach ETA: ${escape(t.latestEta||t.engineerEta||t.adminEta)}</span>`:''}${t.parts?`<span class="tag">Parts: ${escape(t.parts)}</span>`:''}</div>
+    ${userTicketTimeline(status)}
+    <div class="report"><b>Work timing</b><p>Start: ${started}<br>End: ${finished}${t.total!=null?`<br><span class="time">Total: ${fmt(t.total)}</span>`:''}</p></div>
+    ${t.solution?`<div class="report"><b>Engineer update</b><p>${escape(t.solution)}</p></div>`:''}
+  </div>`;
+}
+function renderUserEngineerBoard(){
+  const activeStatuses=['assigned','accepted','travel','progress','waiting'];
+  if(!db.staff.length){$('userEngineerBoard').innerHTML='<div class="workboard-empty">Abhi koi engineer available nahi hai.</div>';return}
+  $('userEngineerBoard').innerHTML=db.staff.map(st=>{
+    const active=db.tickets.filter(t=>engineerIds(t).includes(st.id)&&activeStatuses.includes(t.status));
+    const task=active[0];
+    const presence=engineerPresence(st);
+    const status=task?(userStatusLabel[task.status]||task.status):'Free';
+    const detail=presence==='leave'?'On Leave':(task?`${status}${task.location?' · '+task.location:''}`:'No active task');
+    return `<div class="engineer-live-row">
+      <div class="engineer-live-avatar">${escape(String(st.name||'?')[0].toUpperCase())}</div>
+      <div class="engineer-live-main"><b>${escape(st.name)}</b><small>${escape(detail)}${active.length>1?' · '+active.length+' active tasks':''}</small></div>
+      <span class="live-badge ${presence==='leave'?'busy':(task?'busy':'free')}">${presence==='leave'?'🔴 On Leave':(task?'🔴 Busy':'🟢 Free')}</span>
+    </div>`;
+  }).join('');
+}
+function renderUserWorkboard(){
+  const activeStatuses=['assigned','accepted','travel','progress','waiting'];
+  const active=db.tickets.filter(t=>activeStatuses.includes(t.status));
+  if(!active.length){$('userWorkboard').innerHTML='<div class="workboard-empty">Abhi koi active task nahi chal raha.</div>';return}
+  $('userWorkboard').innerHTML=`<div style="overflow:auto"><table class="workboard-table"><thead><tr><th>Ticket</th><th>Task / Problem</th><th>Engineer</th><th>Status</th><th>Location</th><th>Time</th></tr></thead><tbody>${active.map(t=>{
+    const engs=engineerIds(t).map(id=>db.staff.find(x=>x.id===id)?.name).filter(Boolean).join(', ')||'Not assigned';
+    const time=t.status==='progress'&&t.started?`Started ${timeText(t.started)}`:(t.status==='waiting'?'Waiting for parts':'Updated '+timeText(t.createdAt));
+    return `<tr><td><b>#${escape(t.id.slice(-5))}</b><br><span class="mini">${escape(t.customer)}</span></td><td>${escape(t.device)}<br>${escape(t.problem)}</td><td>👨‍🔧 ${escape(engs)}</td><td><span class="user-status-pill ${t.status}">${escape(userStatusLabel[t.status]||t.status)}</span></td><td>📍 ${t.location?escape(t.location):'—'}</td><td>${escape(time)}${(t.latestEta||t.engineerEta||t.adminEta)?`<br><span class="mini">Engineer Reach ETA: ${escape(t.latestEta||t.engineerEta||t.adminEta)}</span>`:''}</td></tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+function renderAdminWorkboard(){
+  const el=$('adminWorkboard');
+  if(!el)return;
+  const activeStatuses=['assigned','accepted','travel','progress','waiting'];
+  const active=db.tickets.filter(t=>activeStatuses.includes(t.status));
+  if(!active.length){el.innerHTML='<div class="workboard-empty">Abhi koi active task nahi chal raha.</div>';return}
+  el.innerHTML=`<div style="overflow:auto"><table class="workboard-table"><thead><tr><th>Ticket</th><th>Task / Problem</th><th>Engineer</th><th>Status</th><th>Location</th><th>Time</th></tr></thead><tbody>${active.map(t=>{
+    const engs=engineerIds(t).map(id=>db.staff.find(x=>x.id===id)?.name).filter(Boolean).join(', ')||'Not assigned';
+    const time=t.status==='progress'&&t.started?`Started ${timeText(t.started)}`:(t.status==='waiting'?'Waiting for parts':'Updated '+timeText(t.createdAt));
+    return `<tr><td><b>${escape(t.id)}</b><br><span class="mini">${escape(t.customer)}</span></td><td>${escape(t.device)}<br>${escape(t.problem)}</td><td>👨‍🔧 ${escape(engs)}</td><td><span class="user-status-pill ${t.status}">${escape(userStatusLabel[t.status]||t.status)}</span></td><td>📍 ${t.location?escape(t.location):'—'}</td><td>${escape(time)}${(t.latestEta||t.engineerEta||t.adminEta)?`<br><span class="mini">Engineer Reach ETA: ${escape(t.latestEta||t.engineerEta||t.adminEta)}</span>`:''}</td></tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+function renderUserPanel(){
+  renderUserEngineerBoard();
+  renderUserWorkboard();
+}
+function setUserDueDefault(){
+  const d=new Date();
+  $('userDue').value=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+let lastUserStatusQuery=null;
+$('adminStatusCheckBtn').onclick=()=>{
+  const id=$('adminStatusTicketId').value.trim().toLowerCase();
+  const mobile=normalizeMobile($('adminStatusMobile').value);
+  if(!id){$('adminStatusResult').innerHTML='<div class="workboard-empty">Ticket No required hai.</div>';return}
+  const t=db.tickets.find(x=>String(x.id).toLowerCase()===id && (!mobile || normalizeMobile(x.mobile)===mobile));
+  if(!t){$('adminStatusResult').innerHTML='<div class="workboard-empty">Ticket No match nahi hua. Details check karke dobara try karein.</div>';return}
+  const engs=engineerIds(t).map(eid=>db.staff.find(x=>x.id===eid)?.name).filter(Boolean);
+  const status=t.status||'pending_admin';
+  const eta=t.latestEta||t.engineerEta||t.adminEta;
+  const started=t.started?timeText(t.started):'Not started yet';
+  const finished=t.finished?timeText(t.finished):'Not completed yet';
+  $('adminStatusResult').innerHTML=`<div class="user-ticket-summary"><div class="user-ticket-head"><div><h3>${escape(t.customer)} <span class="mini">Ticket No: ${escape(t.id)}</span></h3><div class="mini">📱 ${escape(t.mobile||'—')} · ${escape(t.device)}${t.model?' · '+escape(t.model):''}</div></div><span class="user-status-pill ${status}">${escape(userStatusLabel[status]||status)}</span></div><p style="margin:12px 0 7px"><b>Problem:</b> ${escape(t.problem)}</p><div class="tags"><span class="tag">👨‍🔧 ${engs.length?escape(engs.join(', ')):'Engineer not assigned yet'}</span>${t.due?`<span class="tag">Due: ${escape(t.due)}</span>`:''}${eta?`<span class="tag">🕒 Engineer Reach ETA: ${escape(eta)}</span>`:''}${t.parts?`<span class="tag">Parts: ${escape(t.parts)}</span>`:''}</div>${userTicketTimeline(status)}<div class="report"><b>Work timing</b><p>Start: ${started}<br>End: ${finished}${t.total!=null?`<br><span class="time">Total: ${fmt(t.total)}</span>`:''}</p></div>${t.solution?`<div class="report"><b>Engineer update</b><p>${escape(t.solution)}</p></div>`:''}</div>`;
+};
+$('adminStatusMobile').addEventListener('keydown',e=>{if(e.key==='Enter')$('adminStatusCheckBtn').click()});
+$('adminStatusTicketId').addEventListener('keydown',e=>{if(e.key==='Enter')$('adminStatusCheckBtn').click()});
+
+$('userStatusCheckBtn').onclick=()=>{
+  const id=$('userStatusTicketId').value.trim().toLowerCase();
+  const mobile=normalizeMobile($('userStatusMobile').value);
+  if(!id||!mobile){$('userStatusResult').innerHTML='<div class="workboard-empty">Ticket ID aur mobile number dono required hain.</div>';return}
+  lastUserStatusQuery={id,mobile};
+  const t=db.tickets.find(x=>String(x.id).toLowerCase()===id&&normalizeMobile(x.mobile)===mobile);
+  renderUserTicketResult(t);
+};
+$('userStatusMobile').addEventListener('keydown',e=>{if(e.key==='Enter')$('userStatusCheckBtn').click()});
+$('userStatusTicketId').addEventListener('keydown',e=>{if(e.key==='Enter')$('userStatusCheckBtn').click()});
+
+$('userDevice').addEventListener('change',()=>{
+  const manual=$('userDevice').value==='__manual__';
+  $('userDeviceManual').style.display=manual?'block':'none';
+  $('userDeviceManual').required=manual;
+  if(!manual)$('userDeviceManual').value='';
+});
+
+$('userTicketForm').onsubmit=async e=>{
+  e.preventDefault();
+  if(!activeDepartment){alert('Pehle IT Hardware ya IT Network department select/login karein.');return;}
+  let mobile=$('userMobile').value.trim();
+  if(!mobile)return alert('Mobile number required hai.');
+  let device=$('userDevice').value==='__manual__' ? $('userDeviceManual').value.trim() : $('userDevice').value;
+  if(!device)return alert('Device / Product name required hai.');
+  const btn=e.submitter || e.target.querySelector('button[type="submit"]');
+  if(btn)btn.disabled=true;
+  let id='T'+Date.now();
+  const ticket={
+    id,
+    source:'user',
+    customer:$('userCustomer').value.trim(),
+    mobile,
+    branch:$('userBranch').value.trim(),
+    department:$('userDepartment').value.trim(),
+    location:$('userLocation').value.trim(),
+    device,
+    model:$('userModel').value.trim(),
+    problem:$('userProblem').value.trim(),
+    engineerIds:[],
+    priority:$('userPriority').value,
+    due:$('userDue').value,
+    parts:$('userParts').value.trim(),
+    status:'pending_admin',
+    createdAt:Date.now()
+  };
+  db.tickets.unshift(ticket);
+  persistDepartmentState();
+  save();
+  if(btn)btn.disabled=false;
+  e.target.reset(); setUserDueDefault();
+  $('userStatusTicketId').value=id;
+  $('userStatusMobile').value=mobile;
+  $('userTicketMsg').innerHTML=`Ticket successfully raise ho gaya. <b>Ticket ID: ${id}</b><br>Status check ke liye upar Ticket ID + mobile already fill kar diya gaya hai.`;
+  renderUserPanel();
+  renderUserTicketResult(db.tickets.find(x=>x.id===id));
+  render();
+};
+
+$('userLogoutBtn').onclick=()=>{sessionStorage.removeItem('it-user-unlocked');closeToRoleChooser();};
+
+
+$('device').onchange=()=>{let manual=$('device').value==='__manual__';$('deviceManual').style.display=manual?'block':'none';$('deviceManual').required=manual;if(!manual)$('deviceManual').value='';};$('ticketForm').onsubmit=async e=>{e.preventDefault();if(!(await requireAdminAction('New IT Service Ticket add')))return;let selected=Array.from($('engineer').selectedOptions).map(x=>x.value).filter(Boolean);if(!selected.length)return alert('Kam se kam ek engineer select karein.');let device=$('device').value==='__manual__'?$('deviceManual').value.trim():$('device').value;if(!device)return alert('Device / Product name required hai.');db.tickets.unshift({id:'T'+Date.now(),customer:$('customer').value.trim(),mobile:$('mobile').value.trim(),branch:$('branch').value.trim(),department:$('department').value.trim(),location:$('location').value.trim(),device,model:$('model').value.trim(),problem:$('problem').value.trim(),engineerIds:selected,priority:$('priority').value,due:$('due').value,parts:$('parts').value.trim(),status:'assigned'});save();e.target.reset();$('deviceManual').style.display='none';$('deviceManual').required=false;render()};$('staffForm').onsubmit=async e=>{e.preventDefault();if(!(await requireAdminAction('Engineer add')))return;let un=$('staffUsernameNew').value.trim().toLowerCase().replace(/\s+/g,''); if(db.staff.some(x=>x.username===un))return alert('Ye username already use ho raha hai. Dusra username rakhein.'); db.staff.push({id:'e'+Date.now(),name:$('staffName').value.trim(),mobile:$('staffMobile').value.trim(),username:un,password:$('staffPasswordNew').value});save();e.target.reset();render()};$('staffLogoutBtn').onclick=()=>{sessionStorage.removeItem('it-staff-user');closeToRoleChooser();}; $('currentEngineer').onchange=renderStaff;$('filterStatus').onchange=render;document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{
+  const role=b.dataset.view;
+  const isAdmin=sessionStorage.getItem('it-admin-unlocked')==='1';
+  const isStaff=!!sessionStorage.getItem('it-staff-user');
+  const isUser=sessionStorage.getItem('it-user-unlocked')==='1';
+  if(isStaff && role!=='staff'){return;}
+  if(isUser && role!=='user'){return;}
+  if(role==='user'){showUserLogin();return;}
+  if(role==='staff'){showStaffLogin();return;}
+  if(role==='admin'){
+    if(!isAdmin){$('adminLock').classList.remove('hidden');$('adminPassword').value='';$('lockError').textContent='';setTimeout(()=>$('adminPassword').focus(),50);return;}
+    setActiveView('admin');render();
+  }
+});
+
+function updateRoleNavigation(){
+  const isAdmin=sessionStorage.getItem('it-admin-unlocked')==='1';
+  const isStaff=!!sessionStorage.getItem('it-staff-user');
+  const isUser=sessionStorage.getItem('it-user-unlocked')==='1';
+  document.querySelectorAll('[data-view]').forEach(b=>{
+    const role=b.dataset.view;
+    b.style.display=(isAdmin || (isStaff&&role==='staff') || (isUser&&role==='user'))?'':'none';
+  });
+}
+
+
+const USERPWKEY='it-user-password-v1';function getUserPassword(){return db.departments?.[activeDepartment]?.userPassword||'1234'}const GATE_SESSION_KEY='it-app-gate-open-v1';function getAppGatePassword(){return db.departments?.[activeDepartment]?.password||'1234'}
+function showDepartmentChooser(){$('gateBox').classList.remove('hidden');$('deptPasswordBox').classList.add('hidden');$('roleChooser').classList.add('hidden');$('appGate').classList.remove('hidden');document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));}
+function chooseDepartment(key){
+  sessionStorage.removeItem('it-admin-unlocked');
+  sessionStorage.removeItem('it-staff-user');
+  sessionStorage.removeItem('it-user-unlocked');
+  $('adminLock').classList.add('hidden');
+  $('staffLock').classList.add('hidden');
+  $('userLock').classList.add('hidden');
+  $('gateBox').classList.add('hidden');
+  $('roleChooser').classList.add('hidden');
+  $('deptPasswordBox').classList.remove('hidden');
+  $('deptPasswordTitle').textContent=(key==='hardware'?'IT Hardware':'IT Network')+' Login';
+  $('appGatePassword').value='';
+  $('appGateError').textContent='';
+  try{loadDepartment(key);}catch(e){console.warn('Department load failed:',e);}
+
+  setTimeout(()=>$('appGatePassword').focus(),50);
+}
+function showRoleChooser(){$('adminLock').classList.add('hidden');$('staffLock').classList.add('hidden');$('userLock').classList.add('hidden');$('gateBox').classList.add('hidden');$('deptPasswordBox').classList.add('hidden');$('roleChooser').classList.remove('hidden');$('appGate').classList.remove('hidden');$('selectedDepartmentTitle').textContent=db.departments?.[activeDepartment]?.name||'IT Service Manager';document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));}
+function openAppGate(){
+  const key=activeDepartment;
+  const btn=$('appGateBtn');
+  if(!key){$('appGateError').textContent='Pehle department select karein.';return;}
+  const entered=$('appGatePassword').value;
+  if(btn)btn.disabled=true;
+  $('appGateError').textContent='';
+  if($('appGatePassword').value!==entered)$('appGatePassword').value=entered;
+  if(entered===getAppGatePassword()){
+    sessionStorage.setItem(GATE_SESSION_KEY,'1');
+    $('appGateError').textContent='';
+    $('appGatePassword').value='';
+    showRoleChooser();
+    render();
+    if(btn)btn.disabled=false;
+  }else{
+    $('appGateError').textContent='Wrong department password. Try again.';
+    $('appGatePassword').select();
+    if(btn)btn.disabled=false;
+  }
+}
+function closeToRoleChooser(){sessionStorage.removeItem('it-admin-unlocked');sessionStorage.removeItem('it-staff-user');sessionStorage.removeItem('it-user-unlocked');showRoleChooser()}
+function lockWholeApp(){closeToRoleChooser();sessionStorage.removeItem(GATE_SESSION_KEY);sessionStorage.removeItem('it-active-department');activeDepartment='';$('roleChooser').classList.add('hidden');$('deptPasswordBox').classList.add('hidden');$('gateBox').classList.remove('hidden');$('appGate').classList.remove('hidden')}
+function hideRoleGateForLogin(){
+  // The department gate must be hidden while a role login is displayed.
+  // Otherwise the gate's z-index covers the role login and successful login looks blank.
+  $('appGate').classList.add('hidden');
+  $('gateBox').classList.add('hidden');
+  $('deptPasswordBox').classList.add('hidden');
+  $('roleChooser').classList.add('hidden');
+}
+function returnToRoleChooser(){
+  $('adminLock').classList.add('hidden');
+  $('staffLock').classList.add('hidden');
+  $('userLock').classList.add('hidden');
+  $('appGate').classList.remove('hidden');
+  showRoleChooser();
+}
+function openAdminRoleLogin(){ hideRoleGateForLogin(); $('staffLock').classList.add('hidden'); $('userLock').classList.add('hidden'); $('adminLock').classList.remove('hidden'); $('adminPassword').value=''; $('lockError').textContent=''; setTimeout(()=>{$('adminPassword').focus()},50); }
+function showUserLogin(){if(sessionStorage.getItem('it-user-unlocked')==='1'){setActiveView('user');render();return} hideRoleGateForLogin(); $('userLock').classList.remove('hidden');$('userUsername').value='user';$('userPassword').value='';$('userLockError').textContent='';setTimeout(()=>$('userPassword').focus(),50)}
+function loginUser(){let u=$('userUsername').value.trim().toLowerCase(),pw=$('userPassword').value;if(u==='user'&&pw===getUserPassword()){$('userLock').classList.add('hidden');$('appGate').classList.add('hidden');sessionStorage.removeItem('it-admin-unlocked');sessionStorage.removeItem('it-staff-user');sessionStorage.setItem('it-user-unlocked','1');updateRoleNavigation();setActiveView('user');render()}else{$('userLockError').textContent='Username ya password galat hai.';$('userPassword').select()}}
+const PWKEY='it-admin-password-v1';function getAdminPassword(){return db.departments?.[activeDepartment]?.adminPassword||'1234'}function unlockAdmin(){if($('adminPassword').value===getAdminPassword()){$('adminLock').classList.add('hidden');$('appGate').classList.add('hidden');$('roleChooser').classList.add('hidden');sessionStorage.setItem('it-admin-unlocked','1');$('lockError').textContent='';updateRoleNavigation();setActiveView('admin');render()}else{$('lockError').textContent='Wrong department Admin password. Try again.';$('adminPassword').select()}}
+function showStaffLogin(){if(sessionStorage.getItem('it-staff-user')){setActiveView('staff');updateMyReportEngineerName();renderStaff();return} hideRoleGateForLogin(); $('staffLock').classList.remove('hidden');$('staffUsername').value='';$('staffPassword').value='';$('staffLockError').textContent='';setTimeout(()=>$('staffUsername').focus(),50)}function loginStaff(){let u=$('staffUsername').value.trim().toLowerCase(),pw=$('staffPassword').value,st=db.staff.find(x=>x.username===u&&x.password===pw);if(!st){$('staffLockError').textContent='Username ya password galat hai.';return}sessionStorage.removeItem('it-admin-unlocked');sessionStorage.setItem('it-staff-user',st.id);$('staffLock').classList.add('hidden');$('appGate').classList.add('hidden');$('roleChooser').classList.add('hidden');updateRoleNavigation();setActiveView('staff');$('currentEngineer').value=st.id;updateMyReportEngineerName();renderStaff()}
+$('chooseHardware').onclick=()=>chooseDepartment('hardware');
+$('chooseNetwork').onclick=()=>chooseDepartment('network');
+$('backDeptBtn').onclick=showDepartmentChooser;
+// Department role buttons: explicitly open the correct login panel.
+$('chooseAdmin').onclick=openAdminRoleLogin;
+$('chooseStaff').onclick=()=>showStaffLogin();
+$('chooseUser').onclick=()=>showUserLogin();
+$('backRoleFromAdmin').onclick=returnToRoleChooser;
+$('backRoleFromStaff').onclick=returnToRoleChooser;
+$('backRoleFromUser').onclick=returnToRoleChooser;
+$('staffLoginBtn').onclick=loginStaff;
+$('staffUsername').onkeydown=e=>{if(e.key==='Enter')$('staffPassword').focus()};
+$('staffPassword').onkeydown=e=>{if(e.key==='Enter')loginStaff()};
+
+$('reportPeriod').onchange=()=>{syncReportControls()};
+$('myReportPeriod').onchange=()=>{syncMyReportControls()};
+setReportDateDefault(); syncReportControls(); syncMyReportControls(); updateMyReportEngineerName();
+
+$('userLoginBtn').onclick=loginUser;
+$('userPassword').onkeydown=e=>{if(e.key==='Enter')loginUser()};
+$('unlockBtn').onclick=unlockAdmin;$('departmentLogoutBtn').onclick=()=>lockWholeApp();$('adminLogoutBtn').onclick=()=>{sessionStorage.removeItem('it-admin-unlocked');document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));updateRoleNavigation();showRoleChooser();};$('appGateBtn').onclick=openAppGate;$('appGatePassword').onkeydown=e=>{if(e.key==='Enter')openAppGate()};
+$('adminPassword').onkeydown=e=>{if(e.key==='Enter')unlockAdmin()};
+$('changePwBtn').onclick=()=>{$('passwordSettings').classList.toggle('on');$('userPasswordSettings').classList.remove('on')};
+$('changeUserPwBtn').onclick=async()=>{if(!(await requireAdminAction('User password change')))return;$('userPasswordSettings').classList.toggle('on');$('passwordSettings').classList.remove('on')};$('changeGatePwBtn').onclick=()=>{if(sessionStorage.getItem('it-admin-unlocked')!=='1'){alert('Pehle Admin login karein.');return;}$('gatePasswordSettings').classList.toggle('on');$('passwordSettings').classList.remove('on');$('userPasswordSettings').classList.remove('on')};$('saveGatePwBtn').onclick=()=>{if(sessionStorage.getItem('it-admin-unlocked')!=='1')return;let old=$('oldGatePw').value,nw=$('newGatePw').value;if(old!==getAppGatePassword())return $('saveGatePwMsg').textContent='Current App Door password galat hai.';if(nw.length<4)return $('saveGatePwMsg').textContent='New password minimum 4 characters hona chahiye.';db.appGatePassword=nw;if(db.departments?.[activeDepartment])db.departments[activeDepartment].password=nw;save();$('oldGatePw').value='';$('newGatePw').value='';$('saveGatePwMsg').textContent='App Door password successfully changed.'};
+$('saveUserPwBtn').onclick=async()=>{if(!(await requireAdminAction('User password change')))return;let old=$('oldUserPw').value,nw=$('newUserPw').value;if(old!==getUserPassword())return $('saveUserPwMsg').textContent='Current User password galat hai.';if(nw.length<4)return $('saveUserPwMsg').textContent='New password minimum 4 characters hona chahiye.';localStorage.setItem(USERPWKEY,nw);if(db.departments?.[activeDepartment])db.departments[activeDepartment].userPassword=nw;save();$('oldUserPw').value='';$('newUserPw').value='';$('saveUserPwMsg').textContent='User Portal password successfully changed.'};
+$('savePwBtn').onclick=()=>{let old=$('oldPw').value,nw=$('newPw').value;if(old!==getAdminPassword())return $('savePwMsg').textContent='Current password galat hai.';if(nw.length<4)return $('savePwMsg').textContent='New password minimum 4 characters hona chahiye.';localStorage.setItem(PWKEY,nw);if(db.departments?.[activeDepartment])db.departments[activeDepartment].adminPassword=nw;save();$('oldPw').value='';$('newPw').value='';$('savePwMsg').textContent='Password successfully changed.'};
+if(sessionStorage.getItem(GATE_SESSION_KEY)==='1'&&activeDepartment&&db.departments?.[activeDepartment]){ $('appGate').classList.add('hidden'); updateRoleNavigation(); if(sessionStorage.getItem('it-admin-unlocked')==='1'){ $('roleChooser').classList.add('hidden');$('adminLock').classList.add('hidden');setActiveView('admin'); } else if(sessionStorage.getItem('it-staff-user')){ $('roleChooser').classList.add('hidden');$('staffLock').classList.add('hidden');setActiveView('staff'); } else if(sessionStorage.getItem('it-user-unlocked')==='1'){ $('roleChooser').classList.add('hidden');$('userLock').classList.add('hidden');setActiveView('user'); } else { showRoleChooser(); } } else { document.querySelectorAll('.view').forEach(v=>v.classList.remove('on')); $('adminLock').classList.add('hidden'); $('roleChooser').classList.add('hidden'); $('deptPasswordBox').classList.add('hidden'); $('gateBox').classList.remove('hidden'); $('appGate').classList.remove('hidden'); updateRoleNavigation(); }
+render();
+
+/* User panel refresh: keeps the new user-only dashboard current without changing ticket workflow. */
+setUserDueDefault();
+setInterval(()=>{
+  autoAssignPendingUserTickets();
+  if(document.getElementById('user')?.classList.contains('on')){
+    renderUserPanel();
+    if(lastUserStatusQuery){
+      const t=db.tickets.find(x=>String(x.id).toLowerCase()===lastUserStatusQuery.id&&normalizeMobile(x.mobile)===lastUserStatusQuery.mobile);
+      renderUserTicketResult(t);
+    }
+  }
+},5000);
+
+
+
+/* LOCAL WINDOWS ADMIN MODE - no LAN/client synchronization */
+</script></body></html>
