@@ -1,20 +1,26 @@
-import json, os, sqlite3, threading, time
+import json, os, threading, time
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse
+import psycopg2
 
-# Cloud ke liye absolute path set karna
 BASE = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE, 'IT_Service_Manager_LAN.db')
 ROOT = BASE
-
-# Render jo PORT dega wahi use hoga, warna 9000
 PORT = int(os.environ.get('PORT', 9000))
+
+# Supabase Connection Link (Aapka password yahan safely dala hua hai)
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres:Sajeed%400786@db.ystfzhxmmsqfegvuuzra.supabase.co:5432/postgres')
+
+def get_conn():
+    return psycopg2.connect(DATABASE_URL)
 
 def init_db():
     try:
-        con = sqlite3.connect(DB_PATH)
-        con.execute('CREATE TABLE IF NOT EXISTS app_state (id INTEGER PRIMARY KEY CHECK(id=1), state TEXT NOT NULL, version INTEGER NOT NULL, updated_at REAL NOT NULL)')
+        con = get_conn()
+        cur = con.cursor()
+        # PostgreSQL mein REAL ki jagah DOUBLE PRECISION use hota hai
+        cur.execute('CREATE TABLE IF NOT EXISTS app_state (id INTEGER PRIMARY KEY CHECK(id=1), state TEXT NOT NULL, version INTEGER NOT NULL, updated_at DOUBLE PRECISION NOT NULL)')
         con.commit()
+        cur.close()
         con.close()
     except Exception as e:
         print(f"Database init error: {e}", flush=True)
@@ -23,22 +29,45 @@ LOCK = threading.RLock()
 
 def get_state():
     with LOCK:
-        con=sqlite3.connect(DB_PATH)
-        row=con.execute('SELECT state,version,updated_at FROM app_state WHERE id=1').fetchone()
-        con.close()
-        if not row: return None,0,0
-        return json.loads(row[0]), row[1], row[2]
+        try:
+            con = get_conn()
+            cur = con.cursor()
+            cur.execute('SELECT state,version,updated_at FROM app_state WHERE id=1')
+            row = cur.fetchone()
+            cur.close()
+            con.close()
+            if not row: return None,0,0
+            return json.loads(row[0]), row[1], row[2]
+        except Exception as e:
+            print(f"Get state error: {e}", flush=True)
+            return None,0,0
 
 def put_state(state):
     payload=json.dumps(state, ensure_ascii=False, separators=(',',':'))
     with LOCK:
-        con=sqlite3.connect(DB_PATH)
-        row=con.execute('SELECT version FROM app_state WHERE id=1').fetchone()
-        version=(row[0] if row else 0)+1
-        now=time.time()
-        con.execute('INSERT INTO app_state(id,state,version,updated_at) VALUES(1,?,?,?) ON CONFLICT(id) DO UPDATE SET state=excluded.state, version=excluded.version, updated_at=excluded.updated_at',(payload,version,now))
-        con.commit(); con.close()
-        return version,now
+        try:
+            con = get_conn()
+            cur = con.cursor()
+            cur.execute('SELECT version FROM app_state WHERE id=1')
+            row = cur.fetchone()
+            version = (row[0] if row else 0) + 1
+            now = time.time()
+            
+            # PostgreSQL ka insert/update logic
+            cur.execute('''
+                INSERT INTO app_state(id,state,version,updated_at) 
+                VALUES(1,%s,%s,%s) 
+                ON CONFLICT(id) DO UPDATE 
+                SET state=EXCLUDED.state, version=EXCLUDED.version, updated_at=EXCLUDED.updated_at
+            ''', (payload, version, now))
+            
+            con.commit()
+            cur.close()
+            con.close()
+            return version, now
+        except Exception as e:
+            print(f"Put state error: {e}", flush=True)
+            return 0,0
 
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self,*args,**kwargs): 
@@ -50,7 +79,7 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header('Content-Type','application/json; charset=utf-8')
         self.send_header('Content-Length',str(len(raw)))
         self.send_header('Cache-Control','no-store')
-        self.send_header('Access-Control-Allow-Origin','*') # CORS fix
+        self.send_header('Access-Control-Allow-Origin','*')
         self.end_headers()
         self.wfile.write(raw)
         
@@ -60,12 +89,9 @@ class Handler(SimpleHTTPRequestHandler):
             self._json(200,{'ok':True,'state':state,'version':version,'updatedAt':updated})
             return
         
-        # --- YEH NAYA CODE ADD KIYA HAI ---
-        # Taaki root URL khulte hi index.html load ho
         if self.path == '/' or self.path == '':
             self.path = '/index.html'
-        # ----------------------------------
-        
+            
         return super().do_GET()
         
     def do_OPTIONS(self):
@@ -95,10 +121,9 @@ class Handler(SimpleHTTPRequestHandler):
 
 if __name__=='__main__':
     init_db()
-    print('IT Service Manager LAN Server is starting...', flush=True)
+    print('IT Service Manager Server is starting...', flush=True)
     print('Listening on 0.0.0.0:%d' % PORT, flush=True)
-    print('Database:', DB_PATH, flush=True)
+    print('Connected to Supabase Database', flush=True)
     
-    # Render par bind hone ke liye yeh setup zaroori hai
     server = ThreadingHTTPServer(('0.0.0.0', PORT), Handler)
     server.serve_forever()
