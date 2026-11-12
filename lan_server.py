@@ -1,7 +1,7 @@
 import json, os, threading, time
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse
-import psycopg2
+import psycopg
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 ROOT = BASE
