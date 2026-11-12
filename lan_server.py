@@ -2,25 +2,24 @@ import json, os, threading, time
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse
 import psycopg
+from psycopg_pool import ConnectionPool
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 ROOT = BASE
 PORT = int(os.environ.get('PORT', 9000))
 
-# Supabase Connection Link (Aapka password yahan safely dala hua hai)
+# Supabase Connection Link (Fixed for Pooler)
 DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres.ystfzhxmmsqfegvuuzra:Sajeed%40786@aws-1-ap-south-1.pooler.supabase.com:6543/postgres')
 
-def get_conn():
-    return psycopg.connect(DATABASE_URL)
+# Connection Pool Setup (Isse app fast chalega aur connection fail nahi hoga)
+connection_pool = ConnectionPool(DATABASE_URL, min_size=1, max_size=5, open=True)
+
 def init_db():
     try:
-        con = get_conn()
-        cur = con.cursor()
-        # PostgreSQL mein REAL ki jagah DOUBLE PRECISION use hota hai
-        cur.execute('CREATE TABLE IF NOT EXISTS app_state (id INTEGER PRIMARY KEY CHECK(id=1), state TEXT NOT NULL, version INTEGER NOT NULL, updated_at DOUBLE PRECISION NOT NULL)')
-        con.commit()
-        cur.close()
-        con.close()
+        with connection_pool.connection() as con:
+            with con.cursor() as cur:
+                cur.execute('CREATE TABLE IF NOT EXISTS app_state (id INTEGER PRIMARY KEY CHECK(id=1), state TEXT NOT NULL, version INTEGER NOT NULL, updated_at DOUBLE PRECISION NOT NULL)')
+                con.commit()
     except Exception as e:
         print(f"Database init error: {e}", flush=True)
 
@@ -29,12 +28,10 @@ LOCK = threading.RLock()
 def get_state():
     with LOCK:
         try:
-            con = get_conn()
-            cur = con.cursor()
-            cur.execute('SELECT state,version,updated_at FROM app_state WHERE id=1')
-            row = cur.fetchone()
-            cur.close()
-            con.close()
+            with connection_pool.connection() as con:
+                with con.cursor() as cur:
+                    cur.execute('SELECT state,version,updated_at FROM app_state WHERE id=1')
+                    row = cur.fetchone()
             if not row: return None,0,0
             return json.loads(row[0]), row[1], row[2]
         except Exception as e:
@@ -45,24 +42,20 @@ def put_state(state):
     payload=json.dumps(state, ensure_ascii=False, separators=(',',':'))
     with LOCK:
         try:
-            con = get_conn()
-            cur = con.cursor()
-            cur.execute('SELECT version FROM app_state WHERE id=1')
-            row = cur.fetchone()
-            version = (row[0] if row else 0) + 1
-            now = time.time()
-            
-            # PostgreSQL ka insert/update logic
-            cur.execute('''
-                INSERT INTO app_state(id,state,version,updated_at) 
-                VALUES(1,%s,%s,%s) 
-                ON CONFLICT(id) DO UPDATE 
-                SET state=EXCLUDED.state, version=EXCLUDED.version, updated_at=EXCLUDED.updated_at
-            ''', (payload, version, now))
-            
-            con.commit()
-            cur.close()
-            con.close()
+            with connection_pool.connection() as con:
+                with con.cursor() as cur:
+                    cur.execute('SELECT version FROM app_state WHERE id=1')
+                    row = cur.fetchone()
+                    version = (row[0] if row else 0) + 1
+                    now = time.time()
+                    
+                    cur.execute('''
+                        INSERT INTO app_state(id,state,version,updated_at) 
+                        VALUES(1,%s,%s,%s) 
+                        ON CONFLICT(id) DO UPDATE 
+                        SET state=EXCLUDED.state, version=EXCLUDED.version, updated_at=EXCLUDED.updated_at
+                    ''', (payload, version, now))
+                    con.commit()
             return version, now
         except Exception as e:
             print(f"Put state error: {e}", flush=True)
@@ -122,7 +115,6 @@ if __name__=='__main__':
     init_db()
     print('IT Service Manager Server is starting...', flush=True)
     print('Listening on 0.0.0.0:%d' % PORT, flush=True)
-    print('Connected to Supabase Database', flush=True)
     
     server = ThreadingHTTPServer(('0.0.0.0', PORT), Handler)
     server.serve_forever()
