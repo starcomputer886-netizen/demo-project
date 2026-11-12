@@ -11,8 +11,7 @@ PORT = int(os.environ.get('PORT', 9000))
 DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres:Sajeed%400786@db.ystfzhxmmsqfegvuuzra.supabase.co:5432/postgres')
 
 def get_conn():
-    return psycopg2.connect(DATABASE_URL)
-
+    return psycopg.connect(DATABASE_URL)
 def init_db():
     try:
         con = get_conn()
