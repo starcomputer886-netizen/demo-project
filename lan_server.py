@@ -9,7 +9,7 @@ ROOT = BASE
 PORT = int(os.environ.get('PORT', 9000))
 
 # Supabase Connection Link (Fixed for Pooler)
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres.ystfzhxmmsqfegvuuzra:Sajeed%40786@aws-1-ap-south-1.pooler.supabase.com:6543/postgres')
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres.ystfzhxmmsqfegvuuzra:ShaheenGroup2026@aws-1-ap-south-1.pooler.supabase.com:6543/postgres')
 
 # Connection Pool Setup (Isse app fast chalega aur connection fail nahi hoga)
 connection_pool = ConnectionPool(DATABASE_URL, min_size=1, max_size=5, open=True)
