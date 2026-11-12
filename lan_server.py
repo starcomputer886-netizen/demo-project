@@ -8,7 +8,7 @@ ROOT = BASE
 PORT = int(os.environ.get('PORT', 9000))
 
 # Supabase Connection Link (Aapka password yahan safely dala hua hai)
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres:Sajeed%400786@db.ystfzhxmmsqfegvuuzra.supabase.co:5432/postgres')
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres.ystfzhxmmsqfegvuuzra:Sajeed%40786@aws-1-ap-south-1.pooler.supabase.com:6543/postgres')
 
 def get_conn():
     return psycopg.connect(DATABASE_URL)
